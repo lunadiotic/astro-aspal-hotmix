@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content';
+
+// Fetch and sort blog articles by publishDate
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+
+// Format Date to Indonesian Locale
+function formatDate(dateStr: string) {
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(dateStr).toLocaleDateString('id-ID', options);
+}
+---
+
+<section id="artikel" class="py-24 bg-brand-light relative overflow-hidden">
+  <!-- Soft background graphics -->
+  <div class="absolute left-0 top-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Heading -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-extrabold uppercase tracking-widest text-primary bg-primary/10 px-4 py-2 rounded-full shadow-sm">
+        Edukasi & Artikel
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark mt-4 mb-4 tracking-tight">
+        Seputar Pengaspalan & Konstruksi Jalan
+      </h2>
+      <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+      <p class="text-slate-500 font-medium text-sm sm:text-base">
+        Informasi, tips bermanfaat, dan edukasi praktis seputar perawatan jalan dan aspal hotmix langsung dari tim ahli kami.
+      </p>
+    </div>
+
+    <!-- Blog Posts Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+      {sortedPosts.map(post => (
+        <article class="bg-white border border-slate-100/60 rounded-[2.5rem] shadow-antigravity overflow-hidden hover:-translate-y-2 hover:shadow-antigravity-hover transition-all duration-500 flex flex-col group h-full">
+          <!-- Card Image with Hover Zoom -->
+          <div class="relative w-full aspect-[16/10] overflow-hidden">
+            <img 
+              src={post.data.image || '/images/blog-asphalt.png'} 
+              alt={post.data.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+              width="360"
+              height="225"
+            />
+            <!-- Overlay Category Tag -->
+            <span class="absolute top-4 left-4 bg-primary text-white font-extrabold text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-xl shadow-md">
+              Tips & Edukasi
+            </span>
+          </div>
+
+          <!-- Card Content -->
+          <div class="p-8 flex flex-col flex-grow text-left">
+            <!-- Meta Data (Date & Author) -->
+            <div class="flex items-center gap-4 text-xs font-semibold text-slate-400 mb-4">
+              <span class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {formatDate(post.data.publishDate)}
+              </span>
+              <span class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                {post.data.author}
+              </span>
+            </div>
+
+            <!-- Title H3 -->
+            <h3 class="text-[17px] sm:text-lg font-extrabold text-brand-dark mb-3 group-hover:text-primary transition-colors duration-300 line-clamp-2">
+              <a href={`/artikel/${post.slug}`}>
+                {post.data.title}
+              </a>
+            </h3>
+
+            <!-- Short Description -->
+            <p class="text-slate-500 font-medium text-[13px] sm:text-[14px] leading-relaxed mb-6 line-clamp-3 flex-grow">
+              {post.data.description}
+            </p>
+
+            <!-- Read More Button -->
+            <a 
+              href={`/artikel/${post.slug}`}
+              class="inline-flex items-center gap-1.5 text-xs font-extrabold text-primary hover:text-primary-hover uppercase tracking-widest mt-auto transition-colors duration-300"
+            >
+              <span>Baca Artikel</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

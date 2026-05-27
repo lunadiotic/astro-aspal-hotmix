@@ -1,0 +1,108 @@
+---
+// Hero.astro - Jasa Pengaspalan Hotmix
+---
+
+<section id="home" class="relative overflow-hidden bg-gradient-to-b from-brand-light to-white pt-24 pb-20 md:pt-32 md:pb-28">
+  <!-- Subtle decorative light glowing background shapes -->
+  <div class="absolute top-1/4 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-10 right-10 w-80 h-80 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <!-- Left Column: Content -->
+    <div class="lg:col-span-6 flex flex-col items-start text-left">
+      <!-- Trust Badge -->
+      <div class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 text-secondary font-bold text-[11px] uppercase tracking-widest px-4 py-2 rounded-full mb-6 shadow-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-secondary animate-pulse" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Kontraktor Aspal Terpercaya & Bergaransi</span>
+      </div>
+
+      <!-- Headline H1 (SEO optimized, exact single H1 on page) -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-dark leading-[1.1] mb-6">
+        Jasa Aspal Hotmix <span class="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">Bergaransi</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-base sm:text-lg text-slate-600 font-medium mb-10 max-w-xl leading-relaxed">
+        Solusi pengaspalan jalan yang cepat, kuat, rapi, dan berkualitas tinggi. Siap melayani area Jabodetabek untuk jalan raya, pemukiman, pabrik, ruko, hingga lahan parkir komersial.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+        <a 
+          href="https://wa.me/6281234567890?text=Halo%20CV.%20Rassya%20Tunggal%20Mandiri,%20saya%20tertarik%20dengan%20jasa%20pengaspalan%20hotmix.%20Boleh%20minta%20penawaran%20harga?" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-primary hover:bg-primary-hover text-white text-center font-bold px-8 py-4.5 rounded-2xl shadow-glow-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-[15px]"
+        >
+          Dapatkan Penawaran (WA)
+        </a>
+        <a 
+          href="#layanan" 
+          class="border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-center font-bold px-8 py-4.5 rounded-2xl hover:-translate-y-1 transition-all duration-300 text-[15px]"
+        >
+          Lihat Layanan Kami
+        </a>
+      </div>
+
+      <!-- Key Metrics Row for Trust Building -->
+      <div class="mt-12 grid grid-cols-3 gap-6 sm:gap-10 border-t border-slate-100 pt-8 w-full">
+        <div>
+          <span class="block text-2xl sm:text-3xl font-extrabold text-brand-dark">15+</span>
+          <span class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">Tahun Pengalaman</span>
+        </div>
+        <div>
+          <span class="block text-2xl sm:text-3xl font-extrabold text-brand-dark">500+</span>
+          <span class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">Proyek Selesai</span>
+        </div>
+        <div>
+          <span class="block text-2xl sm:text-3xl font-extrabold text-brand-dark">100%</span>
+          <span class="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase tracking-wider">Garansi Puas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Visual overlayed with floating badges -->
+    <div class="lg:col-span-6 relative flex justify-center lg:justify-end">
+      <!-- Main visual wrapper with custom double-drop shadow for "Antigravity" effect -->
+      <div class="relative w-full max-w-[500px] aspect-[4/3] rounded-[2.5rem] p-3 bg-white shadow-antigravity animate-float-slow">
+        <!-- Main Image -->
+        <img 
+          src="/images/hero-asphalt.png" 
+          alt="Alat Berat Pengaspalan Jalan CV. Rassya Tunggal Mandiri" 
+          class="w-full h-full object-cover rounded-[2rem]"
+          loading="eager"
+          width="476"
+          height="357"
+        />
+
+        <!-- Floating Badge 1: Durability (Antigravity Floating) -->
+        <div class="absolute -top-6 -left-4 sm:-left-8 bg-white border border-slate-100/80 p-4 rounded-3xl shadow-xl flex items-center gap-3.5 animate-float">
+          <div class="w-11 h-11 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div>
+            <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Durability</span>
+            <span class="block text-[13px] font-extrabold text-brand-dark">Garansi 5 Tahun</span>
+          </div>
+        </div>
+
+        <!-- Floating Badge 2: Speedy Work (Antigravity Floating Delayed) -->
+        <div class="absolute -bottom-6 -right-4 sm:-right-8 bg-white border border-slate-100/80 p-4 rounded-3xl shadow-xl flex items-center gap-3.5 animate-float-delayed">
+          <div class="w-11 h-11 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+          </div>
+          <div>
+            <span class="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Speed</span>
+            <span class="block text-[13px] font-extrabold text-brand-dark">Pengerjaan Cepat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

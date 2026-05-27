@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+
+// Fetch the service collections and sort by order metadata
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="layanan" class="py-24 bg-brand-light relative">
+  <!-- Subtle design circle background -->
+  <div class="absolute right-0 top-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+  
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Heading -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-extrabold uppercase tracking-widest text-primary bg-primary/10 px-4 py-2 rounded-full shadow-sm">
+        Layanan Kami
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark mt-4 mb-4 tracking-tight">
+        Spesialis Pengaspalan Hotmix Profesional
+      </h2>
+      <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+      <p class="text-slate-500 font-medium text-sm sm:text-base">
+        CV. Rassya Tunggal Mandiri menyediakan layanan pengaspalan terlengkap untuk infrastruktur jalan raya, area komersial, perumahan, hingga jalan industri berat.
+      </p>
+    </div>
+
+    <!-- 3-Column Grid Layout supporting all 7 services -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+      {sortedServices.map(service => (
+        <article class="bg-white border border-slate-100/60 p-8 rounded-[2rem] shadow-antigravity hover:-translate-y-2 hover:shadow-antigravity-hover transition-all duration-500 flex flex-col items-start group">
+          <div class="w-14 h-14 rounded-2xl bg-primary/5 text-primary flex items-center justify-center mb-6 shadow-inner group-hover:bg-primary group-hover:text-white transition-all duration-500">
+            {service.data.icon === 'road' && <i class="fa-solid fa-road text-xl"></i>}
+            {service.data.icon === 'parking' && <i class="fa-solid fa-square-parking text-xl"></i>}
+            {service.data.icon === 'user' && <i class="fa-solid fa-person-walking text-xl"></i>}
+            {service.data.icon === 'truck' && <i class="fa-solid fa-truck text-xl"></i>}
+            {service.data.icon === 'home' && <i class="fa-solid fa-house text-xl"></i>}
+            {service.data.icon === 'wrench' && <i class="fa-solid fa-screwdriver-wrench text-xl"></i>}
+            {service.data.icon === 'building' && <i class="fa-solid fa-building text-xl"></i>}
+          </div>
+
+          <!-- Title H3 -->
+          <h3 class="text-xl font-extrabold text-brand-dark mb-3.5 group-hover:text-primary transition-colors duration-300">
+            {service.data.title}
+          </h3>
+
+          <!-- Short Description -->
+          <p class="text-slate-500 font-medium text-[13.5px] leading-relaxed mb-5 flex-grow text-left">
+            {service.data.description}
+          </p>
+
+          <!-- Dynamic subServices bulleted checkbox list for rich LSI keyword crawling -->
+          {service.data.subServices && service.data.subServices.length > 0 && (
+            <ul class="w-full flex flex-col gap-2.5 border-t border-slate-100 pt-5 pb-6 text-left">
+              {service.data.subServices.map(sub => (
+                <li class="flex items-start gap-2.5 text-[13px] font-bold text-slate-500">
+                  <span class="w-4 h-4 rounded bg-secondary/15 flex items-center justify-center text-secondary shrink-0 mt-0.5">
+                    <i class="fa-solid fa-check text-[10px]"></i>
+                  </span>
+                  <span>{sub}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          <!-- Link Arrow/More Detail -->
+          <a 
+            href={`/services/${service.slug}`}
+            class="inline-flex items-center gap-1.5 text-xs font-extrabold text-primary group-hover:text-primary-hover uppercase tracking-wider transition-colors duration-300 mt-auto"
+          >
+            <span>Selengkapnya</span>
+            <i class="fa-solid fa-arrow-right text-[11px] transition-transform duration-300 group-hover:translate-x-1"></i>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

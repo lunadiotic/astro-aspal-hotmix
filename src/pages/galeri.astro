@@ -1,0 +1,271 @@
+---
+import fs from 'fs';
+import path from 'path';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+// Establish gallery directory path inside public assets
+const galleryDir = path.join(process.cwd(), 'public', 'images', 'gallery');
+
+let galleryImages = [];
+
+if (fs.existsSync(galleryDir)) {
+  const files = fs.readdirSync(galleryDir);
+  const allowedExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.svg'];
+  
+  galleryImages = files
+    .filter(file => allowedExtensions.includes(path.extname(file).toLowerCase()))
+    .map((file, idx) => {
+      // Replaces underscores and dashes with spaces, and capitalizes each word
+      const displayName = path.basename(file, path.extname(file))
+        .replace(/[_-]/g, ' ')
+        .replace(/\b\w/g, c => c.toUpperCase());
+      
+      return {
+        id: `gallery-img-${idx}`,
+        name: displayName,
+        fileName: file,
+        url: `/images/gallery/${file}`
+      };
+    });
+}
+---
+
+<Layout title="Galeri Dokumentasi Pengerjaan Jalan & Parkir | CV. Rassya Tunggal Mandiri">
+  <Header />
+
+  <main class="min-h-screen bg-brand-light pb-28 pt-8">
+    <!-- Hero Banner -->
+    <section class="relative py-16 bg-brand-dark overflow-hidden mb-12 text-center">
+      <!-- Glow effect background -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] bg-primary/10 rounded-full blur-[100px] -z-10"></div>
+      
+      <div class="max-w-4xl mx-auto px-6">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-primary bg-primary/10 px-4 py-2 rounded-full border border-primary/20">
+          Portofolio
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-white mt-5 mb-4 tracking-tight">
+          Galeri Dokumentasi Proyek
+        </h1>
+        <div class="w-16 h-1 bg-primary mx-auto rounded-full mb-5"></div>
+        <p class="text-slate-400 font-medium text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+          Menampilkan dokumentasi konstruksi jalan raya, area parkir, trotoar, dan pemeliharaan jalan yang dibaca secara otomatis dari folder galeri.
+        </p>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <!-- Search and File count row -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-5 mb-10 border-b border-slate-200/60 pb-8">
+        <!-- Search bar -->
+        <div class="relative w-full md:max-w-md">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-slate-400">
+            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+          </span>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Cari dokumentasi gambar berdasarkan nama..." 
+            class="w-full pl-11 pr-5 py-3.5 bg-white border border-slate-200 focus:border-primary rounded-2xl text-sm font-semibold transition-all duration-200 outline-none text-brand-dark shadow-sm placeholder-slate-400"
+          />
+        </div>
+
+        <!-- File count indicator -->
+        <div class="shrink-0 flex items-center gap-2.5 bg-white border border-slate-200/60 px-5 py-3 rounded-2xl shadow-sm text-xs font-bold text-slate-500">
+          <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+          <span>Menampilkan {galleryImages.length} Gambar</span>
+        </div>
+      </div>
+
+      <!-- Empty State (Fallback if directory is empty) -->
+      {galleryImages.length === 0 ? (
+        <div class="text-center py-20 bg-white border border-slate-100 rounded-3xl shadow-sm max-w-lg mx-auto">
+            <i class="fa-solid fa-folder-open text-5xl"></i>
+          <h3 class="text-lg font-bold text-brand-dark mb-1">Folder Galeri Kosong</h3>
+          <p class="text-sm text-slate-400 max-w-xs mx-auto mb-6">Silakan unggah atau letakkan foto pengerjaan Anda di folder <code>public/images/gallery/</code>.</p>
+          <div class="text-xs bg-slate-50 border border-slate-100 rounded-xl p-4 inline-block text-slate-500 font-mono">
+            Path: public/images/gallery/
+          </div>
+        </div>
+      ) : (
+        <!-- Staggered Gallery Grid -->
+        <div>
+          <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {galleryImages.map((img, idx) => (
+              <article 
+                class="gallery-card bg-white rounded-[2rem] border border-slate-100 shadow-antigravity overflow-hidden group hover:-translate-y-1.5 hover:shadow-antigravity-hover transition-all duration-300 text-left flex flex-col h-full animate-fade-in"
+                data-name={img.name.toLowerCase()}
+                style={`animation-delay: ${idx * 50}ms`}
+              >
+                <!-- Image Container with Zoom effect -->
+                <div 
+                  class="h-64 overflow-hidden relative shrink-0 cursor-zoom-in btn-zoom-image"
+                  data-image-url={img.url}
+                  data-image-name={img.name}
+                >
+                  <img 
+                    src={img.url} 
+                    alt={img.name} 
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103" 
+                    loading="lazy" 
+                  />
+                  <!-- Hover Action Tag -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider">
+                      <i class="fa-solid fa-magnifying-glass-plus text-xs"></i>
+                      <span>Zoom Gambar</span>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Card Body (Title & filename info) -->
+                <div class="p-6 flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3 class="text-[15.5px] font-extrabold text-brand-dark group-hover:text-primary transition-colors duration-300 leading-snug mb-3">
+                      {img.name}
+                    </h3>
+                  </div>
+                  <!-- Filename badge footer -->
+                  <div class="border-t border-slate-50 pt-4 mt-auto flex items-center justify-between">
+                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nama File</span>
+                    <span class="font-mono text-[10.5px] font-semibold text-slate-500 truncate max-w-[200px]" title={img.fileName}>
+                      {img.fileName}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <!-- JavaScript Search empty state -->
+          <div id="search-empty-state" class="hidden text-center py-16 bg-white border border-slate-100 rounded-3xl shadow-sm max-w-md mx-auto mt-6 animate-fade-in">
+            <i class="fa-solid fa-magnifying-glass text-4xl"></i>
+            <h3 class="text-base font-bold text-brand-dark mb-1">Gambar Tidak Ditemukan</h3>
+            <p class="text-xs text-slate-400 max-w-xs mx-auto">Nama file gambar tidak cocok dengan kata kunci pencarian Anda.</p>
+          </div>
+        </div>
+      )}
+      
+    </div>
+  </main>
+
+  <!-- ================= SLEEK FULLSCREEN LIGHTBOX MODAL ================= -->
+  <div id="lightbox-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/90 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+    <!-- Close button -->
+    <button id="btn-close-lightbox" class="absolute right-6 top-6 z-50 bg-slate-900/60 hover:bg-slate-900 text-white p-3 rounded-2xl border border-white/10 transition-colors" aria-label="Close Lightbox">
+      <i class="fa-solid fa-xmark text-xl"></i>
+    </button>
+    
+    <!-- Image Box -->
+    <div class="relative w-full max-w-4xl max-h-[85vh] transform scale-95 transition-all duration-300 flex items-center justify-center">
+      <img id="lightbox-img" src="" alt="Fullscreen Paving View" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl border border-white/5" />
+      <!-- Lightbox Caption Badge -->
+      <span id="lightbox-caption" class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-slate-900/80 backdrop-blur-md text-white font-bold text-xs px-5 py-2.5 rounded-full border border-white/10 max-w-[90%] truncate shadow-lg">
+        Detail Gambar
+      </span>
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<!-- Client Side Zoom & Filename Search Filter Script -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    // ----------------------------------------------------
+    // LIVE FILENAME SEARCH FILTER
+    // ----------------------------------------------------
+    const searchInput = document.getElementById('search-input');
+    const galleryGrid = document.getElementById('gallery-grid');
+    const searchEmptyState = document.getElementById('search-empty-state');
+    const cards = document.querySelectorAll('.gallery-card');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        let matchCount = 0;
+
+        cards.forEach(card => {
+          const nameAttr = card.getAttribute('data-name');
+          if (nameAttr.includes(query)) {
+            card.classList.remove('hidden');
+            matchCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        if (matchCount === 0 && cards.length > 0) {
+          searchEmptyState.classList.remove('hidden');
+          galleryGrid.classList.add('hidden');
+        } else {
+          searchEmptyState.classList.add('hidden');
+          galleryGrid.classList.remove('hidden');
+        }
+      });
+    }
+
+    // ----------------------------------------------------
+    // FULLSCREEN LIGHTBOX ZOOM OVERLAY
+    // ----------------------------------------------------
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const btnCloseLightbox = document.getElementById('btn-close-lightbox');
+    const zoomTriggers = document.querySelectorAll('.btn-zoom-image');
+
+    function openLightbox(url, name) {
+      if (!lightboxModal) return;
+      lightboxImg.src = url;
+      lightboxCaption.innerText = name;
+      lightboxModal.classList.remove('opacity-0', 'pointer-events-none');
+      lightboxModal.children[1].classList.remove('scale-95');
+      lightboxModal.children[1].classList.add('scale-100');
+    }
+
+    function closeLightbox() {
+      if (!lightboxModal) return;
+      lightboxModal.classList.add('opacity-0', 'pointer-events-none');
+      lightboxModal.children[1].classList.add('scale-95');
+      lightboxModal.children[1].classList.remove('scale-100');
+    }
+
+    zoomTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const url = trigger.getAttribute('data-image-url');
+        const name = trigger.getAttribute('data-image-name');
+        openLightbox(url, name);
+      });
+    });
+
+    if (btnCloseLightbox) {
+      btnCloseLightbox.addEventListener('click', closeLightbox);
+    }
+    
+    if (lightboxModal) {
+      lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) closeLightbox();
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Custom fade-in animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

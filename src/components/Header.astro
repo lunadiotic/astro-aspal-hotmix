@@ -1,0 +1,153 @@
+---
+import { getCollection } from 'astro:content';
+
+// Fetch the regional markdown content collections for the dropdown links
+const regions = await getCollection('wilayah');
+// Sort alphabetically by slug/title
+const sortedRegions = regions.sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const navLinks = [
+  { href: '/#home', label: 'Home' },
+  { href: '/#profil', label: 'Profile' },
+  { href: '/#kontak', label: 'Hubungi Kami' },
+  { href: '/#artikel', label: 'Artikel' },
+];
+---
+
+<header class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-100 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="/#home" class="flex items-center gap-2.5 group">
+      <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-glow-primary transition-transform duration-300 group-hover:scale-105">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 21 1.9-5.7a8.5 8.5 0 0 1 8-5.8h8.1" />
+          <path d="m3 21 9-9" />
+          <path d="M20.8 13.5a3 3 0 0 0-3.8-3.8l-3.4 10.3a3 3 0 0 0 3.8 3.8Z" />
+        </svg>
+      </div>
+      <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-brand-dark to-primary bg-clip-text text-transparent">CV. Rassya Tunggal Mandiri</span>
+    </a>
+
+    <!-- Pure CSS Hamburger Toggle (Checkbox Hack) -->
+    <input type="checkbox" id="menu-toggle" class="hidden peer" />
+    
+    <!-- Mobile Burger Label Button -->
+    <label for="menu-toggle" class="md:hidden flex flex-col justify-center items-center w-10 h-10 cursor-pointer text-brand-dark p-2 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors" aria-label="Toggle Menu">
+      <span class="w-5 h-0.5 bg-current transition-all duration-300 peer-checked:rotate-45 peer-checked:translate-y-1.5 mb-1.5 animate-pulse"></span>
+      <span class="w-5 h-0.5 bg-current transition-all duration-300 peer-checked:opacity-0 mb-1.5"></span>
+      <span class="w-5 h-0.5 bg-current transition-all duration-300 peer-checked:-rotate-45 peer-checked:-translate-y-1.5"></span>
+    </label>
+
+    <!-- Navigation Menu Items -->
+    <nav class="absolute md:relative top-20 md:top-0 left-0 w-full md:w-auto bg-white md:bg-transparent border-b border-slate-100 md:border-none px-6 md:px-0 py-6 md:py-0 flex flex-col md:flex-row md:items-center gap-6 md:gap-9 transition-all duration-300 transform md:transform-none scale-y-0 origin-top peer-checked:scale-y-100 md:scale-y-100 z-40 max-h-[80vh] overflow-y-auto md:overflow-visible">
+      
+      <!-- Home Navigation Link -->
+      <a href="/#home" class="text-[15px] font-semibold text-slate-600 hover:text-primary relative py-2 transition-colors duration-300 group">
+        Home
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <!-- Jasa Pengaspalan Dropdown Menu (Pure CSS using Hover on Desktop, Nested list on Mobile) -->
+      <div class="relative group py-3 text-left">
+        <button class="inline-flex items-center gap-1 text-[15px] font-semibold text-slate-600 hover:text-primary transition-colors duration-300 w-full">
+          <span>Jasa Pengaspalan</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180 text-slate-400 group-hover:text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <!-- Dropdown Panel (Desktop only hover, hidden on mobile in CSS default) -->
+        <div class="absolute left-0 top-full pt-2.5 w-56 hidden md:group-hover:block transition-all duration-300 z-50 origin-top-left">
+          <div class="bg-white border border-slate-100 rounded-2xl shadow-xl py-2.5">
+            {sortedRegions.map(reg => (
+              <a 
+                href={`/${reg.slug}`} 
+                class="block px-5 py-2.5 text-[13.5px] font-semibold text-slate-600 hover:text-primary hover:bg-slate-50 transition-colors duration-200"
+              >
+                Pengaspalan {reg.data.title.replace("Jasa Pengaspalan Hotmix ", "")}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Nested List for Mobile View -->
+        <div class="flex flex-col gap-2 pl-3.5 border-l-2 border-slate-100 mt-2.5 md:hidden text-left">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 block">Wilayah Layanan</span>
+          {sortedRegions.map(reg => (
+            <a 
+              href={`/${reg.slug}`} 
+              class="text-[13.5px] font-semibold text-slate-500 hover:text-primary py-1 transition-colors duration-200 block"
+            >
+              &rsaquo; Pengaspalan {reg.data.title.replace("Jasa Pengaspalan Hotmix ", "")}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Remaining nav links -->
+      <a href="/#profil" class="text-[15px] font-semibold text-slate-600 hover:text-primary relative py-2 transition-colors duration-300 group text-left">
+        Profile
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="/#kontak" class="text-[15px] font-semibold text-slate-600 hover:text-primary relative py-2 transition-colors duration-300 group text-left">
+        Hubungi Kami
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="/#artikel" class="text-[15px] font-semibold text-slate-600 hover:text-primary relative py-2 transition-colors duration-300 group text-left">
+        Artikel
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <a href="/galeri" class="text-[15px] font-semibold text-slate-600 hover:text-primary relative py-2 transition-colors duration-300 group text-left">
+        Galeri
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+      </a>
+
+      <!-- Mobile WhatsApp CTA (inside drawer) -->
+      <a 
+        href="https://wa.me/6281234567890?text=Halo%20CV.%20Rassya%20Tunggal%20Mandiri,%20saya%20tertarik%20dengan%20jasa%20pengaspalan%20hotmix" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="md:hidden w-full text-center bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-6 rounded-2xl shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300 text-sm mt-4 block"
+      >
+        Hubungi WhatsApp
+      </a>
+    </nav>
+
+    <!-- Desktop CTA Button -->
+    <div class="hidden md:block">
+      <a 
+        href="https://wa.me/6281234567890?text=Halo%20CV.%20Rassya%20Tunggal%20Mandiri,%20saya%20tertarik%20dengan%20jasa%20pengaspalan%20hotmix" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-7 rounded-2xl shadow-glow-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-[14px] tracking-wide"
+      >
+        <span>Dapatkan Penawaran</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Toggle mobile drawer view */
+  #menu-toggle:checked ~ nav {
+    display: flex;
+    transform: scaleY(1);
+  }
+  
+  #menu-toggle:checked ~ label span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  #menu-toggle:checked ~ label span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle:checked ~ label span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+</style>

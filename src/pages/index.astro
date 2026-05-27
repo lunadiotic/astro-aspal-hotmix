@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ProfileSection from '../components/ProfileSection.astro';
+import Services from '../components/Services.astro';
+import BlogSection from '../components/BlogSection.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Footer from '../components/Footer.astro';
+
+// SEO Title & Description for Jasa Pengaspalan Hotmix Page
+const seoTitle = 'Jasa Aspal Hotmix Jabodetabek Bergaransi | CV. Rassya Tunggal Mandiri';
+const seoDescription = 'Jasa pengaspalan jalan hotmix berkualitas tinggi dan bergaransi resmi di Jabodetabek. Melayani pengaspalan jalan raya, pemukiman, ruko, area parkir, tambal lubang & lapis ulang.';
+---
+
+<Layout title={seoTitle} description={seoDescription}>
+  <!-- Semantic Header Block -->
+  <Header />
+
+  <!-- Semantic Main Wrapper -->
+  <main id="main-content" class="flex-grow">
+    <!-- Hero Section (Home) -->
+    <Hero />
+
+    <!-- Profile Section (About us) -->
+    <ProfileSection />
+
+    <!-- Services Section (Pengaspalan) -->
+    <Services />
+
+    <!-- Blog Section (Articles) -->
+    <BlogSection />
+
+    <!-- Testimonials Section (Ulasan) -->
+    <Testimonials />
+
+    <!-- Contact Section (Hubungi Kami) -->
+    <ContactSection />
+  </main>
+
+  <!-- Semantic Footer Block -->
+  <Footer />
+</Layout>

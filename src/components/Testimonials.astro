@@ -1,0 +1,92 @@
+---
+const testimonials = [
+  {
+    name: 'Budi Santoso',
+    role: 'Ketua RT 04, Komplek Permata Depok',
+    comment: 'Sangat puas dengan pengerjaan jalan perumahan kami. Hasilnya sangat rapi, tebalnya sesuai kesepakatan, dan air hujan sekarang langsung mengalir ke selokan tanpa tergenang lagi. Komunikasi pemborongnya sangat ramah.',
+    stars: 5,
+    avatarColor: 'bg-blue-500',
+  },
+  {
+    name: 'Hendra Wijaya',
+    role: 'Manajer Operasional PT Logistik Jaya, Bekasi',
+    comment: 'Lahan parkir pabrik kami yang sering dilalui truk besar sekarang diaspal hotmix dengan ketahanan luar biasa. Walaupun sering dilewati tronton, aspal tetap mulus tanpa amblas sedikitpun. Terima kasih CV. Rassya Tunggal Mandiri!',
+    stars: 5,
+    avatarColor: 'bg-emerald-500',
+  },
+  {
+    name: 'Siti Aminah',
+    role: 'Pemilik Ruko Niaga Serpong, Tangerang',
+    comment: 'Pengerjaannya cepat sekali! Untuk area ruko seluas 300 meter persegi hanya butuh waktu 2 hari dari perataan tanah sampai pengaspalan hotmix selesai. Ruko terlihat mewah dan elegan dengan aspal baru ini.',
+    stars: 5,
+    avatarColor: 'bg-amber-500',
+  },
+];
+---
+
+<section id="tentang" class="py-24 bg-white relative overflow-hidden">
+  <!-- Dynamic glow background shapes -->
+  <div class="absolute left-1/2 bottom-0 transform -translate-x-1/2 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-extrabold uppercase tracking-widest text-secondary bg-secondary/10 px-4 py-2 rounded-full shadow-sm">
+        Ulasan Pelanggan
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark mt-4 mb-4 tracking-tight">
+        Apa Kata Mereka Tentang Kami?
+      </h2>
+      <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+      <p class="text-slate-500 font-medium text-sm sm:text-base">
+        Kepuasan pelanggan adalah prioritas utama kami. Berikut adalah testimoni jujur dari para klien yang telah menggunakan jasa kami.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {testimonials.map(item => (
+        <div class="bg-slate-50 border border-slate-100/60 p-8 rounded-[2.5rem] shadow-sm hover:bg-white hover:shadow-antigravity hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between relative group">
+          <!-- Quote Icon decoration -->
+          <div class="absolute top-6 right-8 text-slate-200/80 group-hover:text-primary/10 transition-colors duration-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+          </div>
+
+          <div>
+            <!-- Stars Rating Block -->
+            <div class="flex items-center gap-1 mb-5">
+              {[...Array(item.stars)].map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              ))}
+            </div>
+
+            <!-- Comment Description -->
+            <p class="text-slate-600 font-medium text-[14px] leading-relaxed italic mb-8 relative z-10">
+              "{item.comment}"
+            </p>
+          </div>
+
+          <!-- Customer Identity block -->
+          <div class="flex items-center gap-4 border-t border-slate-100 pt-6">
+            <!-- Colored avatar logo with user initial -->
+            <div class={`w-11 h-11 rounded-2xl ${item.avatarColor} flex items-center justify-center text-white font-extrabold text-sm shadow-sm group-hover:scale-105 transition-transform duration-300`}>
+              {item.name.charAt(0)}
+            </div>
+            <div>
+              <span class="block text-[14px] font-extrabold text-brand-dark">
+                {item.name}
+              </span>
+              <span class="block text-[11px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">
+                {item.role}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

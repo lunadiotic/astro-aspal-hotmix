@@ -1,0 +1,212 @@
+---
+import { getCollection } from 'astro:content';
+
+// Fetch the service collections and sort by order metadata
+const services = await getCollection('services');
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="kontak" class="py-24 bg-brand-light relative overflow-hidden">
+  <!-- Glowing shapes -->
+  <div class="absolute right-0 top-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute left-10 bottom-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Heading -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-xs font-extrabold uppercase tracking-widest text-primary bg-primary/10 px-4 py-2 rounded-full shadow-sm">
+        Hubungi Kami
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark mt-4 mb-4 tracking-tight">
+        Ajukan Penawaran Harga Gratis
+      </h2>
+      <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+      <p class="text-slate-500 font-medium text-sm sm:text-base">
+        Hubungi kami atau isi formulir di bawah ini untuk berkonsultasi mengenai kebutuhan pengaspalan Anda. Tim estimator kami siap melayani Anda.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <!-- Left Column: Contact Cards -->
+      <div class="lg:col-span-5 flex flex-col gap-6 text-left">
+        <!-- Card 1: WhatsApp Hotline -->
+        <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-center gap-5 hover:shadow-antigravity transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+          </div>
+          <div>
+            <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Hotline WhatsApp</span>
+            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="text-base sm:text-lg font-extrabold text-brand-dark hover:text-secondary transition-colors">
+              +62 812-3456-7890
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: HQ Address -->
+        <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-start gap-5 hover:shadow-antigravity transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+            <i class="fa-solid fa-location-dot text-2xl"></i>
+          </div>
+          <div>
+            <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Alamat Kantor</span>
+            <p class="text-[13.5px] font-semibold text-slate-600 leading-relaxed">
+              Jl. Raya Margonda No. 120, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Email Address -->
+        <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-center gap-5 hover:shadow-antigravity transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-500 shrink-0">
+            <i class="fa-solid fa-envelope text-2xl"></i>
+          </div>
+          <div>
+            <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Email Resmi</span>
+            <a href="mailto:info@rassyatunggalmandiri.com" class="text-sm sm:text-base font-extrabold text-brand-dark hover:text-primary transition-colors">
+              info@rassyatunggalmandiri.com
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Working Hours -->
+        <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-center gap-5 hover:shadow-antigravity transition-all duration-300">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-500 shrink-0">
+            <i class="fa-solid fa-clock text-2xl"></i>
+          </div>
+          <div>
+            <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Jam Operasional</span>
+            <span class="block text-sm font-extrabold text-brand-dark">Senin - Minggu: 24 Jam Non-Stop</span>
+          </div>
+        </div>
+
+        <!-- Social Media Links (Strategic Placement 2) -->
+        <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm hover:shadow-antigravity transition-all duration-300 text-left">
+          <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-4">Media Sosial Resmi</span>
+          <div class="flex items-center gap-3">
+            <a 
+              href="https://instagram.com/rassyatunggalmandiri" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
+              aria-label="Instagram CV. Rassya Tunggal Mandiri"
+            >
+              <i class="fa-brands fa-instagram text-xl"></i>
+            </a>
+            <a 
+              href="https://tiktok.com/@rassyatunggalmandiri" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-black flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
+              aria-label="TikTok CV. Rassya Tunggal Mandiri"
+            >
+              <i class="fa-brands fa-tiktok text-xl"></i>
+            </a>
+            <a 
+              href="https://youtube.com/@rassyatunggalmandiri" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-red-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
+              aria-label="YouTube CV. Rassya Tunggal Mandiri"
+            >
+              <i class="fa-brands fa-youtube text-xl"></i>
+            </a>
+            <a 
+              href="https://linkedin.com/company/rassyatunggalmandiri" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-blue-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
+              aria-label="LinkedIn CV. Rassya Tunggal Mandiri"
+            >
+              <i class="fa-brands fa-linkedin text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive WA Quote Request Form -->
+      <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-[2.5rem] border border-slate-100/60 shadow-antigravity text-left">
+        <h3 class="text-xl font-extrabold text-brand-dark mb-2">Formulir Estimasi Biaya</h3>
+        <p class="text-xs sm:text-sm text-slate-500 font-medium mb-8">
+          Isi detail area Anda untuk menghitung perkiraan harga dan jadwalkan survei lokasi secara gratis.
+        </p>
+
+        <form id="wa-lead-form" class="space-y-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="form-name" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Nama Lengkap</label>
+              <input type="text" id="form-name" required class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 focus:border-primary focus:bg-white rounded-xl text-sm font-semibold transition-all duration-200 outline-none placeholder-slate-400 text-brand-dark" placeholder="Contoh: Budi Santoso" />
+            </div>
+            <div>
+              <label for="form-region" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Wilayah Proyek</label>
+              <input 
+                type="text" 
+                id="form-region" 
+                required 
+                class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 focus:border-primary focus:bg-white rounded-xl text-sm font-semibold transition-all duration-200 outline-none placeholder-slate-400 text-brand-dark" 
+                placeholder="Contoh: Depok, Bekasi Timur, Jakarta Selatan" 
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="form-paving" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Jenis Pengaspalan</label>
+              <select id="form-paving" required class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 focus:border-primary focus:bg-white rounded-xl text-sm font-semibold transition-all duration-200 outline-none text-brand-dark">
+                <option value="" disabled selected class="text-slate-400">Pilih Jenis Pengaspalan...</option>
+                {sortedServices.map(service => (
+                  <optgroup label={service.data.title} class="font-extrabold text-brand-dark bg-white">
+                    <option value={service.data.title} class="font-semibold">{service.data.title} (Semua Sub-Layanan)</option>
+                    {service.data.subServices && service.data.subServices.map(sub => (
+                      <option value={sub} class="font-normal text-slate-600 pl-4">{sub}</option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label for="form-area" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Estimasi Luas Area (m²)</label>
+              <input type="number" id="form-area" required class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 focus:border-primary focus:bg-white rounded-xl text-sm font-semibold transition-all duration-200 outline-none placeholder-slate-400 text-brand-dark" placeholder="Contoh: 500" min="1" />
+            </div>
+          </div>
+
+          <div>
+            <label for="form-message" class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Pesan Tambahan (Opsional)</label>
+            <textarea id="form-message" class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 focus:border-primary focus:bg-white rounded-xl text-sm font-semibold transition-all duration-200 outline-none placeholder-slate-400 text-brand-dark min-h-[100px] resize-none" placeholder="Tulis catatan khusus, misal: aspal tebal 4cm, butuh dikerjakan malam hari, dll."></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white font-extrabold py-4 px-6 rounded-2xl shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300 text-[15px] flex items-center justify-center gap-2">
+            <!-- Font Awesome WA Icon -->
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>Kirim Penawaran via WhatsApp</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Zero external dependencies, pure lightweight browser execution block for Form validation & WA redirect -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('wa-lead-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Retrieve inputs
+        const name = document.getElementById('form-name').value.trim();
+        const region = document.getElementById('form-region').value.trim();
+        const paving = document.getElementById('form-paving').value;
+        const area = document.getElementById('form-area').value.trim();
+        const message = document.getElementById('form-message').value.trim();
+        
+        // WhatsApp prefilled template construction
+        const waNumber = '6281234567890';
+        const template = `Halo CV. Rassya Tunggal Mandiri,%0A%0ASaya ingin mengajukan formulir estimasi penawaran harga pengaspalan hotmix.%0A%0A*Detail Penawaran:*%0A• *Nama Lengkap:* ${encodeURIComponent(name)}%0A• *Wilayah Proyek:* ${encodeURIComponent(region)}%0A• *Jenis Paving:* ${encodeURIComponent(paving)}%0A• *Estimasi Luas:* ${encodeURIComponent(area)} m²%0A• *Catatan Tambahan:* ${encodeURIComponent(message || '-')}%0A%0AMohon bantuannya untuk menghitung perkiraan biaya dan jadwal survei lokasi gratis. Terima kasih!`;
+        
+        // Fire WA window
+        window.open(`https://wa.me/${waNumber}?text=${template}`, '_blank');
+      });
+    }
+  });
+</script>

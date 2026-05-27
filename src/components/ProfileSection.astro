@@ -1,0 +1,83 @@
+---
+// ProfileSection.astro - Tentang Kami / Profil Perusahaan
+const brandValues = [
+  {
+    title: 'Tim Ahli Berpengalaman',
+    desc: 'Dioperasikan oleh tenaga sipil profesional yang telah menangani ratusan proyek pengaspalan berskala nasional.',
+    iconColor: 'text-primary bg-primary/10',
+  },
+  {
+    title: 'Material Hotmix AMP Resmi',
+    desc: 'Kami hanya menyuplai aspal dari Asphalt Mixing Plant (AMP) berstandar industri dengan pengawasan mutu ketat.',
+    iconColor: 'text-secondary bg-secondary/10',
+  },
+  {
+    title: 'Armada Alat Berat Lengkap',
+    desc: 'Kepemilikan penuh atas mesin finisher, tandem roller, pneumatic roller, pneumatic cutter, memastikan pengerjaan rapi.',
+    iconColor: 'text-blue-500 bg-blue-50/80',
+  },
+  {
+    title: 'Garansi Tertulis Resmi',
+    desc: 'Setiap pekerjaan kami lengkapi dengan sertifikat jaminan garansi pemeliharaan tertulis demi kenyamanan jangka panjang.',
+    iconColor: 'text-emerald-500 bg-emerald-50/80',
+  },
+];
+---
+
+<section id="profil" class="py-24 bg-white relative overflow-hidden">
+  <!-- Subtle graphic backing -->
+  <div class="absolute left-0 bottom-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    
+    <!-- Left Column: Corporate Narrative -->
+    <div class="lg:col-span-5 text-left flex flex-col items-start">
+      <span class="text-xs font-extrabold uppercase tracking-widest text-primary bg-primary/10 px-4 py-2 rounded-full shadow-sm">
+        Profil Perusahaan
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark mt-4 mb-6 tracking-tight leading-tight">
+        Mitra Konstruksi Jalan Terpercaya
+      </h2>
+      <div class="w-16 h-1 bg-primary rounded-full mb-6"></div>
+      
+      <p class="text-slate-600 font-medium text-sm sm:text-base leading-relaxed mb-6">
+        CV. Rassya Tunggal Mandiri didirikan dengan visi menjadi kontraktor pengaspalan jalan terkemuka di Indonesia yang mengutamakan integritas, ketahanan mutu, dan kepuasan pelanggan. Kami percaya bahwa jalan yang mulus adalah kunci kelancaran ekonomi dan keselamatan bersama.
+      </p>
+      <p class="text-slate-600 font-medium text-sm sm:text-base leading-relaxed mb-8">
+        Melalui komitmen penggunaan material aspal hotmix terbaik serta pengerjaan leveling yang presisi, kami dipercaya oleh berbagai instansi pemerintah, kontraktor perumahan, perkantoran komersial, hingga pemukiman warga di Jabodetabek.
+      </p>
+      
+      <!-- Call to action inside profile -->
+      <a 
+        href="https://wa.me/6281234567890?text=Halo%20Astra%20Aspal,%20saya%20ingin%20berkonsultasi%20mengenai%20profil%20dan%20penawaran%20harga" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-8 rounded-2xl shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300 text-sm"
+      >
+        Pelajari Hubungan Kemitraan
+      </a>
+    </div>
+
+    <!-- Right Column: Values Cards Grid -->
+    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {brandValues.map(value => (
+        <div class="bg-slate-50 border border-slate-100/60 p-7 rounded-[2rem] shadow-sm hover:bg-white hover:shadow-antigravity hover:-translate-y-1 transition-all duration-300 text-left flex flex-col justify-start">
+          <!-- Icon placeholder with visual style -->
+          <div class={`w-12 h-12 rounded-2xl ${value.iconColor} flex items-center justify-center mb-5 font-extrabold text-lg shadow-sm shrink-0`}>
+            <!-- Checkmark SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h4 class="text-[16px] font-extrabold text-brand-dark mb-2.5">
+            {value.title}
+          </h4>
+          <p class="text-slate-500 font-medium text-[13px] leading-relaxed">
+            {value.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

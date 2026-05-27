@@ -1,0 +1,153 @@
+---
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#layanan', label: 'Layanan' },
+  { href: '#tentang', label: 'Tentang' },
+  { href: '#artikel', label: 'Artikel' },
+];
+---
+
+<footer class="bg-brand-dark text-slate-300 pt-20 pb-10 relative overflow-hidden">
+  <!-- Subtle top highlight bar matching our main brand accent -->
+  <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary to-secondary"></div>
+
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start mb-16">
+    <!-- Corporate Identity Column -->
+    <div class="md:col-span-5 flex flex-col items-start text-left">
+      <!-- Footer Logo -->
+      <a href="#home" class="flex items-center gap-2.5 mb-6 group">
+        <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-glow-primary transition-transform duration-300 group-hover:scale-105">
+          <i class="fa-solid fa-road text-2xl"></i>
+        </div>
+        <span class="text-xl font-extrabold tracking-wider text-white">CV. Rassya Tunggal Mandiri</span>
+      </a>
+      <!-- Corporate Description -->
+      <p class="text-slate-400 font-medium text-sm leading-relaxed mb-6 max-w-sm">
+        Kontraktor dan pemborong jasa pengaspalan jalan hotmix berpengalaman yang siap memberikan hasil permukaan aspal yang kuat, rata, awet, dan bergaransi resmi untuk kelancaran transportasi Anda.
+      </p>
+      
+      <!-- Trust Indicator badges -->
+      <div class="flex items-center gap-3">
+        <span class="bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-300 shadow-sm flex items-center gap-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+          Resmi & Berbadan Hukum
+        </span>
+        <span class="bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-300 shadow-sm flex items-center gap-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+          AMP Terstandarisasi
+        </span>
+      </div>
+
+      <!-- Social Media Icons (Strategic Placement 1) -->
+      <div class="mt-8">
+        <span class="block text-xs text-slate-500 font-extrabold uppercase tracking-wider mb-3.5">Ikuti Media Sosial Kami</span>
+        <div class="flex items-center gap-3">
+          <a 
+            href="https://instagram.com/rassyatunggalmandiri" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
+            aria-label="Instagram CV. Rassya Tunggal Mandiri"
+          >
+              <i class="fa-brands fa-instagram text-xl"></i>
+          </a>
+          <a 
+            href="https://tiktok.com/@rassyatunggalmandiri" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-black hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
+            aria-label="TikTok CV. Rassya Tunggal Mandiri"
+          >
+              <i class="fa-brands fa-tiktok text-xl"></i>
+          </a>
+          <a 
+            href="https://youtube.com/@rassyatunggalmandiri" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-red-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
+            aria-label="YouTube CV. Rassya Tunggal Mandiri"
+          >
+              <i class="fa-brands fa-youtube text-xl"></i>
+          </a>
+          <a 
+            href="https://linkedin.com/company/rassyatunggalmandiri" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-blue-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
+            aria-label="LinkedIn CV. Rassya Tunggal Mandiri"
+          >
+              <i class="fa-brands fa-linkedin text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Column -->
+    <div class="md:col-span-3 md:pl-8">
+      <h4 class="text-white font-extrabold text-sm uppercase tracking-widest mb-6">
+        Navigasi Cepat
+      </h4>
+      <nav class="flex flex-col gap-4">
+        {footerLinks.map(link => (
+          <a 
+            href={link.href} 
+            class="text-[14px] font-semibold text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-300 inline-flex items-center gap-1.5"
+          >
+            <span>&rsaquo;</span>
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <!-- Contact & Location Info Column -->
+    <div class="md:col-span-4 flex flex-col items-start">
+      <h4 class="text-white font-extrabold text-sm uppercase tracking-widest mb-6">
+        Hubungi Kami
+      </h4>
+      <!-- Address details -->
+      <div class="flex items-start gap-3.5 mb-5">
+        <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-primary border border-white/10 shrink-0">
+          <i class="fa-solid fa-location-dot text-sm"></i>
+        </div>
+        <p class="text-slate-400 font-medium text-xs sm:text-sm leading-relaxed text-left">
+          <strong>Kantor Pusat CV. Rassya Tunggal Mandiri:</strong><br />
+          Jl. Raya Margonda No. 120, Kec. Pancoran Mas, Kota Depok, Jawa Barat 16431
+        </p>
+      </div>
+
+      <!-- WhatsApp details -->
+      <div class="flex items-start gap-3.5">
+        <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-secondary border border-white/10 shrink-0">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+        </div>
+        <div class="text-left">
+          <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Konsultasi / WA:</span>
+          <a 
+            href="https://wa.me/6281234567890?text=Halo%20CV.%20Rassya%20Tunggal%20Mandiri,%20saya%20ingin%20meminta%20penawaran%20harga%20jasa%20pengaspalan" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="block text-white font-extrabold text-sm sm:text-base hover:text-secondary hover:underline transition-colors mt-0.5"
+          >
+            +62 812-3456-7890 (Bpk. Rahman)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar with Copyright, Legal Disclaimer and LSI Keyword injection for SEO -->
+  <div class="border-t border-slate-800 pt-8 max-w-7xl mx-auto px-6 text-center">
+    <!-- LSI Keyword SEO block -->
+    <p class="text-slate-500 font-medium text-[11px] leading-relaxed max-w-4xl mx-auto mb-6 text-center">
+      CV. Rassya Tunggal Mandiri merupakan penyedia jasa pemborong aspal berpengalaman yang menghadirkan solusi kontraktor jalan berstandar tinggi. Kami menawarkan aspal murah hotmix berkualitas prima dengan jaminan bergaransi resmi untuk jalan tol, jalan perumahan, kawasan industri, pergudangan, mall, ruko, dan halaman rumah. Hubungi kami sekarang untuk layanan estimasi survei lokasi secara gratis.
+    </p>
+
+    <!-- Copyright -->
+    <p class="text-[12px] font-bold text-slate-600 uppercase tracking-widest">
+      &copy; {currentYear} CV. Rassya Tunggal Mandiri. Hak Cipta Dilindungi Undang-Undang.
+    </p>
+  </div>
+</footer>

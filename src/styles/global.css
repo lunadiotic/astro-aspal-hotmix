@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ------------------------------------------------------------- */
+    /* Brand Design Color System - Easily Customizable               */
+    /* Note: Set as R G B numbers to allow Tailwind's opacity system */
+    /* ------------------------------------------------------------- */
+    
+    /* Primary Accent: Professional Blue (#2563eb) */
+    --color-primary: 37 99 235;
+    --color-primary-hover: 29 78 216; /* Hover shade: Deep Blue (#1d4ed8) */
+    
+    /* Secondary Accent (Trust/Checkmarks): Emerald Green (#10b981) */
+    --color-secondary: 16 185 129;
+    
+    /* Brand Text Dark: Slate 900 (#0f172a) */
+    --color-brand-dark: 15 23 42;
+    
+    /* Brand Light BG: Slate 50 (#f8fafc) */
+    --color-brand-light: 248 250 252;
+  }
+}
+
+/* Smooth Scrolling & Typography Defaults */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  color: rgb(var(--color-brand-dark));
+  background-color: #ffffff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------------------------------------------- */
+/* Antigravity Micro-Animations                                  */
+/* Used for subtle, lifelike floating visual effects             */
+/* ------------------------------------------------------------- */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes float-slow {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* Custom premium scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-brand-light));
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid rgb(var(--color-brand-light));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

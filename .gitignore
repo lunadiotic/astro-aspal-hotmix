@@ -1,0 +1,26 @@
+# build output
+dist/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# runtime env/config files
+.env
+.env.production
+.env.development
+.env.local
+.env.*.local
+
+# astro typegen
+.astro/
+
+# IDE / System files
+.DS_Store
+Thumbs.db
+.vscode/
