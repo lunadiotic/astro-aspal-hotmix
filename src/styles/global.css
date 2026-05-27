@@ -9,12 +9,12 @@
     /* Note: Set as R G B numbers to allow Tailwind's opacity system */
     /* ------------------------------------------------------------- */
     
-    /* Primary Accent: Professional Blue (#2563eb) */
-    --color-primary: 37 99 235;
-    --color-primary-hover: 29 78 216; /* Hover shade: Deep Blue (#1d4ed8) */
+    /* Primary Accent: RTM Logo Gear Blue (#1e68b3) */
+    --color-primary: 30 104 179;
+    --color-primary-hover: 22 84 148; /* Hover shade: Darker RTM Blue (#165494) */
     
-    /* Secondary Accent (Trust/Checkmarks): Emerald Green (#10b981) */
-    --color-secondary: 16 185 129;
+    /* Secondary Accent: RTM Logo Interior Sky Blue (#8acdf5) */
+    --color-secondary: 138 205 245;
     
     /* Brand Text Dark: Slate 900 (#0f172a) */
     --color-brand-dark: 15 23 42;
