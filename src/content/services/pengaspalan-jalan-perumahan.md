@@ -14,4 +14,4 @@ Jalan lingkungan komplek perumahan yang rapi dan bebas lubang meningkatkan kuali
 1. **Pengaspalan Jalan di Kompleks Perumahan**: Pemasangan aspal hotmix jenis halus/sand sheet yang aman untuk berkendara mobil keluarga, bersepeda anak-anak, dan aktivitas berjalan kaki warga.
 2. **Perbaikan & Pemeliharaan Jalan Perumahan**: Melakukan tambal sulam lubang jalan komplek atau pelapisan ulang aspal tipis (*overlay*) pada aspal lama yang telah memudar/kering agar terlihat seperti baru kembali.
 
-Setiap proyek jalan perumahan kami kawal dengan jaminan garansi tertulis resmi untuk memberikan rasa tenang bagi pengurus RT/RW maupun developer perumahan.
+Setiap proyek jalan perumahan kami kawal dengan sertifikasi uji kelayakan dan masa pemeliharaan resmi untuk memberikan rasa tenang bagi pengurus RT/RW maupun developer perumahan.

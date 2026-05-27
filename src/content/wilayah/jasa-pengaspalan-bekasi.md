@@ -1,6 +1,6 @@
 ---
 title: Jasa Pengaspalan Hotmix Bekasi & Cikarang
-description: Kontraktor pengaspalan jalan hotmix berpengalaman di Kota Bekasi, Kabupaten Bekasi, Cikarang, dan Cibitung. Spesialis aspal jalan pemukiman, kawasan pabrik industri, dan markah jalan bergaransi.
+description: Kontraktor pengaspalan jalan hotmix berpengalaman di Kota Bekasi, Kabupaten Bekasi, Cikarang, dan Cibitung. Spesialis aspal jalan pemukiman, kawasan pabrik industri, dan markah jalan berstandar mutu AMP.
 popularServices:
   - Jasa Pengaspalan Jalan Raya & Pemukiman
   - Pengaspalan Area Pabrik & Gudang Cikarang

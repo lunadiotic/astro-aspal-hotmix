@@ -5,7 +5,7 @@ popularServices:
   - Jasa Pengaspalan Jalan Raya & Villa
   - Pemadatan Fondasi Batu & Leveling Kemiringan
   - Perbaikan Jalan Rusak & Longsor
-metaTitle: Jasa Pengaspalan Bogor - Kontraktor Hotmix Bergaransi Resmi
+metaTitle: Jasa Pengaspalan Bogor - Kontraktor Hotmix Kualitas AMP Teruji
 ---
 
 Kami menyediakan layanan **jasa pengaspalan hotmix Bogor** khusus yang disesuaikan dengan kontur tanah berbukit dan curah hujan tinggi khas wilayah Bogor (Bogor Kota, Sentul City, Cibinong, Tajur, Ciawi, Puncak, Parung, dan sekitarnya).
@@ -15,4 +15,4 @@ Kami menyediakan layanan **jasa pengaspalan hotmix Bogor** khusus yang disesuaik
 2. **Pengaspalan Jalan Menanjak**: Pengalaman bertahun-tahun meratakan aspal pada jalan tanjakan curam di perumahan bukit Sentul maupun halaman villa di Puncak.
 3. **Fondasi Makadam yang Tebal**: Memperkuat struktur bawah (*sub-base*) sebelum aspal hotmix digelontorkan untuk mencegah pergeseran tanah.
 
-Kami memberikan jaminan garansi pemeliharaan ekstra untuk mengantisipasi cuaca basah ekstrem di daerah Bogor. Hubungi kami untuk survei lokasi gratis!
+Kami memberikan standar uji kelayakan mutu ekstra untuk mengantisipasi cuaca basah ekstrem di daerah Bogor. Hubungi kami untuk survei lokasi gratis!

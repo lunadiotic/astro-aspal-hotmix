@@ -1,6 +1,6 @@
 ---
 title: Pengaspalan Area Komersial & Khusus
-description: Jasa pengaspalan halaman gedung perkantoran, pusat perbelanjaan, hotel, ruko bisnis, serta pengaspalan jalan masuk dan akses utama bergaransi resmi.
+description: Jasa pengaspalan halaman gedung perkantoran, pusat perbelanjaan, hotel, ruko bisnis, serta pengaspalan jalan masuk dan akses utama berstandar mutu AMP resmi.
 icon: building
 order: 7
 subServices:

@@ -1,11 +1,11 @@
 ---
 title: Jasa Pengaspalan Hotmix Depok
-description: Kontraktor pemborong aspal hotmix terpercaya di wilayah Depok. Kami melayani pengaspalan jalan perumahan, ruko, area parkir perkantoran, dan perbaikan jalan berlubang dengan harga kompetitif dan garansi resmi.
+description: Kontraktor pemborong aspal hotmix terpercaya di wilayah Depok. Kami melayani pengaspalan jalan perumahan, ruko, area parkir perkantoran, dan perbaikan jalan berlubang dengan harga kompetitif dan standar kelayakan sipil.
 popularServices:
   - Jasa Pengaspalan Jalan Raya & Perumahan
   - Pengaspalan Lahan Parkir & Area Komersial
   - Perbaikan Jalan Berlubang & Lapis Ulang
-metaTitle: Jasa Pengaspalan Depok - Kontraktor Hotmix Murah Bergaransi
+metaTitle: Jasa Pengaspalan Depok - Kontraktor Hotmix Kualitas AMP Teruji
 ---
 
 Kami adalah penyedia **jasa pengaspalan hotmix Depok** terpercaya yang siap membantu mewujudkan infrastruktur jalan yang mulus, kokoh, dan berdaya tahan lama di seluruh wilayah Kota Depok (Margonda, Beji, Pancoran Mas, Cimanggis, Sawangan, Cinere, Tapos, dan sekitarnya).

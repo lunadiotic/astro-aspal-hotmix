@@ -1,6 +1,6 @@
 ---
 title: Perbaikan dan Pemeliharaan Jalan
-description: Layanan pemeliharaan aspal jalan preventif untuk mengatasi aspal retak amblas, tambal lubang jalan (patching), dan pelapisan aspal ulang (overlay) bergaransi resmi.
+description: Layanan pemeliharaan aspal jalan preventif untuk mengatasi aspal retak amblas, tambal lubang jalan (patching), dan pelapisan aspal ulang (overlay) dengan standar kelayakan sipil resmi.
 icon: wrench
 order: 6
 subServices:
