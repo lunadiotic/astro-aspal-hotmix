@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Official Sitemap Location for CV. Rassya Tunggal Mandiri
+Sitemap: https://jasapengaspalanamp.com/sitemap-index.xml
