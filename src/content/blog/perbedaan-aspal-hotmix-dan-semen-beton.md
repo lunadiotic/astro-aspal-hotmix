@@ -3,7 +3,7 @@ title: Perbedaan Aspal Hotmix vs. Semen Beton (Rigid Pavement)
 description: Bingung memilih antara aspal hotmix atau semen beton untuk jalan Anda? Simak perbandingan biaya, ketahanan, kecepatan kerja, dan perawatannya di sini.
 publishDate: "2026-05-29"
 author: "Tim Teknik CV. Rassya Tunggal Mandiri"
-image: "/images/blog-asphalt.png"
+image: "/images/blog-asphalt.webp"
 ---
 
 Saat merencanakan pembangunan jalan komplek perumahan, halaman parkir ruko, atau jalan raya industri, salah satu keputusan terbesar yang harus diambil adalah memilih jenis perkerasan. Apakah sebaiknya menggunakan **aspal hotmix** (*flexible pavement*) atau **semen beton** (*rigid pavement*)?

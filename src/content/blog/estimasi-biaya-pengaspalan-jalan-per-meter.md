@@ -3,7 +3,7 @@ title: Estimasi Biaya Pengaspalan Jalan Per Meter (M2) Terupdate
 description: Ingin tahu berapa biaya membuat jalan aspal baru atau aspal ulang per meter persegi? Simak simulasi rincian biaya, faktor harga, dan tips hematnya.
 publishDate: "2026-05-29"
 author: "Tim Estimator CV. Rassya Tunggal Mandiri"
-image: "/images/blog-asphalt.png"
+image: "/images/blog-asphalt.webp"
 ---
 
 Saat merencanakan pembuatan jalan perumahan baru, halaman parkir ruko bisnis, perkantoran komersial, atau sekadar halaman rumah pribadi, pertanyaan pertama yang selalu muncul adalah: **"Berapa estimasi biaya pengaspalan jalan per meter persegi (m2)?"**

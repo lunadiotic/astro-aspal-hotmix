@@ -3,7 +3,7 @@ title: Panduan Lengkap Memilih Jasa Pengaspalan Hotmix & Proses AMP
 description: Kupas tuntas seluk-beluk jasa pengaspalan jalan profesional. Temukan rahasia mutu aspal hotmix terbaik langsung dari pabrik AMP (Asphalt Mixing Plant) untuk ketahanan jalan jangka panjang.
 publishDate: "2026-05-29"
 author: "Tim Konstruksi CV. Rassya Tunggal Mandiri"
-image: "/images/blog-asphalt.png"
+image: "/images/blog-asphalt.webp"
 ---
 
 Dalam dunia konstruksi sipil dan infrastruktur, kualitas jalan memegang peranan krusial bagi kelancaran transportasi dan pertumbuhan ekonomi. Untuk mendapatkan jalan yang mulus, rata, dan tahan lama, pemilihan **jasa pengaspalan** yang tepat serta pemahaman mengenai material aspal yang digunakan adalah kunci utamanya. 

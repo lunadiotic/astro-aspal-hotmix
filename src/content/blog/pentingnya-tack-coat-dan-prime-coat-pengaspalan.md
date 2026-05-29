@@ -3,7 +3,7 @@ title: Pentingnya Lapisan Perekat Tack Coat & Prime Coat dalam Paving Aspal
 description: Mengapa aspal baru bisa terkelupas atau retak dalam hitungan bulan? Temukan fungsi vital cairan perekat Tack Coat & Prime Coat dalam konstruksi aspal di sini.
 publishDate: "2026-05-29"
 author: "Tim Lapangan CV. Rassya Tunggal Mandiri"
-image: "/images/blog-asphalt.png"
+image: "/images/blog-asphalt.webp"
 ---
 
 Pernahkah Anda melihat proyek pengaspalan jalan raya di mana aspalnya terkelupas dalam lembaran besar hanya beberapa bulan setelah selesai dikerjakan? Atau aspal yang meluncur bergeser saat dilintasi roda kendaraan berat? 

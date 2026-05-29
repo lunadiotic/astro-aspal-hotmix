@@ -3,7 +3,7 @@ title: Cara Menghitung Kebutuhan Volume Aspal Hotmix untuk Proyek Anda
 description: Ingin tahu rumus menghitung volume tonase aspal hotmix agar tidak tertipu pemborong jalan? Simak panduan rumus matematika sederhana pengaspalan di sini.
 publishDate: "2026-05-29"
 author: "Tim Estimator Sipil CV. Rassya Tunggal Mandiri"
-image: "/images/blog-asphalt.png"
+image: "/images/blog-asphalt.webp"
 ---
 
 Saat Anda memutuskan untuk melakukan pengaspalan jalan perumahan, halaman ruko, atau gudang pabrik komersial menggunakan **jasa pengaspalan**, salah satu kendala terbesar adalah menentukan seberapa banyak material **aspal hotmix** yang sebenarnya Anda butuhkan. 

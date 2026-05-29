@@ -3,7 +3,7 @@ title: "Mengenal Aspal AC-WC: Jenis Aspal Hotmix untuk Jalan Raya & Tol"
 description: Penasaran jenis aspal apa yang digunakan di jalan tol nasional? Kenali aspal AC-WC, keunggulannya, dan fungsinya sebagai penahan beban berat jalan raya.
 publishDate: "2026-05-29"
 author: "Tim Quality Control CV. Rassya Tunggal Mandiri"
-image: "/images/blog-asphalt.png"
+image: "/images/blog-asphalt.webp"
 ---
 
 Pernahkah Anda memperhatikan permukaan jalan tol atau jalan nasional lintas provinsi yang tampak hitam legam, sangat halus, namun memiliki cengkeraman ban yang luar biasa kuat meskipun dilalui ribuan kendaraan berat setiap harinya? Permukaan jalan premium tersebut dilapisi oleh jenis aspal hotmix khusus yang disebut **AC-WC (Asphalt Concrete-Wearing Course)**.

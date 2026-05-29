@@ -3,7 +3,7 @@ title: 5 Tips Ampuh Merawat Aspal Hotmix Agar Tahan Puluhan Tahun
 description: Temukan cara merawat aspal jalan dan lahan parkir Anda agar terhindar dari retak, amblas, dan berlubang akibat musuh alami aspal seperti genangan air dan ceceran oli kendaraan.
 publishDate: "2026-05-27"
 author: "Tim Ahli CV. Rassya Tunggal Mandiri"
-image: "/images/blog-asphalt.png"
+image: "/images/blog-asphalt.webp"
 ---
 
 Aspal hotmix dikenal sangat kuat, lentur, dan mulus. Namun, seperti semua struktur infrastruktur lainnya, aspal membutuhkan perawatan berkala agar terhindar dari kerusakan dini. Sebagai kontraktor jalan terpercaya, kami merangkum 5 cara ampuh untuk memperpanjang usia aspal Anda hingga puluhan tahun.
