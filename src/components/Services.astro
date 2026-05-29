@@ -30,7 +30,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
       {sortedServices.map(service => (
         <article class="bg-white border border-slate-100/60 p-8 rounded-[2rem] shadow-antigravity hover:-translate-y-2 hover:shadow-antigravity-hover transition-all duration-500 flex flex-col items-start group">
-          <div class="w-14 h-14 rounded-2xl bg-primary/5 text-primary flex items-center justify-center mb-6 shadow-inner group-hover:bg-primary group-hover:text-white transition-all duration-500">
+          <div class="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100/80 text-primary flex items-center justify-center mb-6 shadow-sm group-hover:bg-primary group-hover:text-white group-hover:border-transparent group-hover:shadow-glow-primary transition-all duration-500">
             {service.data.icon === 'road' && <Icon name="road" class="w-5 h-5" />}
             {service.data.icon === 'parking' && <Icon name="parking" class="w-5 h-5" />}
             {service.data.icon === 'user' && <Icon name="user" class="w-5 h-5" />}
