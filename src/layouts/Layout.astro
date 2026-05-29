@@ -1,5 +1,6 @@
 ---
 import SEO from '../components/SEO.astro';
+import Icon from '../components/Icon.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -14,8 +15,27 @@ const { title, description } = Astro.props;
 <html lang="id">
   <head>
     <SEO title={title} description={description} />
-    <!-- Font Awesome 6 for neat, standard brand and UI icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Google tag (gtag.js) - PageSpeed Optimized Interaction Loader -->
+    <script is:inline>
+      function loadGA() {
+        if (window.gaLoaded) return;
+        window.gaLoaded = true;
+        
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-5HQVJSF5NG';
+        document.head.appendChild(script);
+        
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5HQVJSF5NG');
+      }
+      
+      // Load Google Analytics on first human user interaction
+      const gaEvents = ['mouseover', 'keydown', 'touchmove', 'touchstart', 'scroll'];
+      gaEvents.forEach(event => window.addEventListener(event, loadGA, { passive: true, once: true }));
+    </script>
   </head>
   <body class="bg-white text-brand-dark selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col">
     <slot />
@@ -31,8 +51,8 @@ const { title, description } = Astro.props;
       <!-- Ripple pulse glow -->
       <span class="absolute inset-0 rounded-full bg-[#25D366]/40 animate-ping -z-10 group-hover:animate-none"></span>
       
-      <!-- Font Awesome WhatsApp Icon -->
-      <i class="fa-brands fa-whatsapp text-[28px]"></i>
+      <!-- Optimized Inline SVG WhatsApp Icon -->
+      <Icon name="whatsapp" class="w-7 h-7 text-white" />
     </a>
   </body>
 </html>

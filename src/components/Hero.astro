@@ -3,15 +3,20 @@
 ---
 
 <section id="home" class="relative overflow-hidden bg-gradient-to-b from-brand-light to-white pt-24 pb-20 md:pt-32 md:pb-28">
-  <!-- Asphalt Mixing Plant Background Image (Highly Visible) -->
+  <!-- Asphalt Mixing Plant Background Image (Highly Visible & Responsive WebP) -->
   <div class="absolute inset-0 z-0 select-none pointer-events-none opacity-60">
-    <img 
-      src="/images/amp-factory.webp" 
-      alt="Pabrik Asphalt Mixing Plant (AMP) CV. Rassya Tunggal Mandiri" 
-      class="w-full h-full object-cover object-center animate-pulse"
-      style="animation-duration: 10s;"
-      loading="eager"
-    />
+    <picture class="w-full h-full object-cover object-center animate-pulse" style="animation-duration: 10s;">
+      <source media="(max-width: 768px)" srcset="/images/amp-factory-mobile.webp" />
+      <img 
+        src="/images/amp-factory.webp" 
+        alt="Pabrik Asphalt Mixing Plant (AMP) CV. Rassya Tunggal Mandiri" 
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        width="1200"
+        height="900"
+      />
+    </picture>
   </div>
   <!-- Premium camera lens soft blur and light wash to protect readability -->
   <div class="absolute inset-0 bg-white/25 backdrop-blur-[1.5px] z-0"></div>
@@ -80,12 +85,13 @@
     <div class="lg:col-span-6 relative flex justify-center lg:justify-end">
       <!-- Main visual wrapper with custom double-drop shadow for "Antigravity" effect -->
       <div class="relative w-full max-w-[500px] aspect-[4/3] rounded-[2.5rem] p-3 bg-white shadow-antigravity animate-float-slow">
-        <!-- Main Image -->
+        <!-- Main Image with High Priority for Instant LCP -->
         <img 
           src="/images/hero-asphalt.webp" 
           alt="Alat Berat Pengaspalan Jalan CV. Rassya Tunggal Mandiri" 
           class="w-full h-full object-cover rounded-[2rem]"
           loading="eager"
+          fetchpriority="high"
           width="476"
           height="357"
         />

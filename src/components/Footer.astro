@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 const currentYear = new Date().getFullYear();
 
 const footerLinks = [
@@ -19,7 +21,7 @@ const footerLinks = [
       <!-- Footer Logo -->
       <a href="#home" class="flex items-center gap-2.5 mb-6 group">
         <div class="w-10 h-10 rounded-xl overflow-hidden shadow-glow-primary transition-transform duration-300 group-hover:scale-105 shrink-0 bg-white">
-          <img src="/images/logo.png" alt="Logo CV. Rassya Tunggal Mandiri" class="w-full h-full object-cover" />
+          <img src="/images/logo.webp" alt="Logo CV. Rassya Tunggal Mandiri" class="w-full h-full object-cover" width="40" height="40" />
         </div>
         <span class="text-xl font-extrabold tracking-wider text-white">CV. Rassya Tunggal Mandiri</span>
       </a>
@@ -51,7 +53,7 @@ const footerLinks = [
             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
             aria-label="Instagram CV. Rassya Tunggal Mandiri"
           >
-              <i class="fa-brands fa-instagram text-xl"></i>
+              <Icon name="instagram" class="w-5 h-5" />
           </a>
           <a 
             href="https://tiktok.com/@jasa.pengaspalan00" 
@@ -60,7 +62,7 @@ const footerLinks = [
             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-black hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
             aria-label="TikTok CV. Rassya Tunggal Mandiri"
           >
-              <i class="fa-brands fa-tiktok text-xl"></i>
+              <Icon name="tiktok" class="w-5 h-5" />
           </a>
           <a 
             href="https://youtube.com/@jasaPengaspalan-w6k" 
@@ -69,7 +71,7 @@ const footerLinks = [
             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-red-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
             aria-label="YouTube CV. Rassya Tunggal Mandiri"
           >
-              <i class="fa-brands fa-youtube text-xl"></i>
+              <Icon name="youtube" class="w-5 h-5" />
           </a>
           <a 
             href="https://www.linkedin.com/in/jasa-pengaspalan-211ab6407" 
@@ -78,7 +80,7 @@ const footerLinks = [
             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-blue-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
             aria-label="LinkedIn CV. Rassya Tunggal Mandiri"
           >
-              <i class="fa-brands fa-linkedin text-xl"></i>
+              <Icon name="linkedin" class="w-5 h-5" />
           </a>
         </div>
       </div>
@@ -110,7 +112,7 @@ const footerLinks = [
       <!-- Address details -->
       <div class="flex items-start gap-3.5 mb-5">
         <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-primary border border-white/10 shrink-0">
-          <i class="fa-solid fa-location-dot text-sm"></i>
+          <Icon name="location-dot" class="w-4 h-4" />
         </div>
         <p class="text-slate-400 font-medium text-xs sm:text-sm leading-relaxed text-left">
           <strong>Kantor Pusat CV. Rassya Tunggal Mandiri:</strong><br />
@@ -121,7 +123,7 @@ const footerLinks = [
       <!-- WhatsApp details -->
       <div class="flex items-start gap-3.5">
         <div class="w-8 h-8 rounded-xl bg-white/5 flex items-center justify-center text-secondary border border-white/10 shrink-0">
-          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <Icon name="whatsapp" class="w-5 h-5" />
         </div>
         <div class="text-left">
           <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Konsultasi / WA:</span>

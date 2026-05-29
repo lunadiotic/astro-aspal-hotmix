@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Icon from './Icon.astro';
 
 // Fetch the service collections and sort by order metadata
 const services = await getCollection('services');
@@ -32,7 +33,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
         <!-- Card 1: WhatsApp Hotline -->
         <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-center gap-5 hover:shadow-antigravity transition-all duration-300">
           <div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            <Icon name="whatsapp" class="w-6 h-6" />
           </div>
           <div>
             <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Hotline WhatsApp</span>
@@ -45,7 +46,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
         <!-- Card 2: HQ Address -->
         <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-start gap-5 hover:shadow-antigravity transition-all duration-300">
           <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-            <i class="fa-solid fa-location-dot text-2xl"></i>
+            <Icon name="location-dot" class="w-6 h-6" />
           </div>
           <div>
             <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Alamat Kantor</span>
@@ -58,7 +59,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
         <!-- Card 3: Email Address -->
         <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-center gap-5 hover:shadow-antigravity transition-all duration-300">
           <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-500 shrink-0">
-            <i class="fa-solid fa-envelope text-2xl"></i>
+            <Icon name="envelope" class="w-6 h-6" />
           </div>
           <div>
             <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Email Resmi</span>
@@ -71,7 +72,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
         <!-- Card 4: Working Hours -->
         <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-center gap-5 hover:shadow-antigravity transition-all duration-300">
           <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-500 shrink-0">
-            <i class="fa-solid fa-clock text-2xl"></i>
+            <Icon name="clock" class="w-6 h-6" />
           </div>
           <div>
             <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Jam Operasional</span>
@@ -90,7 +91,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
               class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
               aria-label="Instagram CV. Rassya Tunggal Mandiri"
             >
-              <i class="fa-brands fa-instagram text-xl"></i>
+              <Icon name="instagram" class="w-5 h-5" />
             </a>
             <a 
               href="https://tiktok.com/@jasa.pengaspalan00" 
@@ -99,7 +100,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
               class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-black flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
               aria-label="TikTok CV. Rassya Tunggal Mandiri"
             >
-              <i class="fa-brands fa-tiktok text-xl"></i>
+              <Icon name="tiktok" class="w-5 h-5" />
             </a>
             <a 
               href="https://www.youtube.com/@jasaPengaspalan-w6k" 
@@ -108,7 +109,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
               class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-red-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
               aria-label="YouTube CV. Rassya Tunggal Mandiri"
             >
-              <i class="fa-brands fa-youtube text-xl"></i>
+              <Icon name="youtube" class="w-5 h-5" />
             </a>
             <a 
               href="https://www.linkedin.com/in/jasa-pengaspalan-211ab6407" 
@@ -117,7 +118,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
               class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-blue-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
               aria-label="LinkedIn CV. Rassya Tunggal Mandiri"
             >
-              <i class="fa-brands fa-linkedin text-xl"></i>
+              <Icon name="linkedin" class="w-5 h-5" />
             </a>
           </div>
         </div>
@@ -175,8 +176,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
           </div>
 
           <button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white font-extrabold py-4 px-6 rounded-2xl shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300 text-[15px] flex items-center justify-center gap-2">
-            <!-- Font Awesome WA Icon -->
-            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <Icon name="whatsapp" class="w-5 h-5" />
             <span>Kirim Penawaran via WhatsApp</span>
           </button>
         </form>
