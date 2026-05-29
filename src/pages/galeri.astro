@@ -6,19 +6,28 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 
-// Establish gallery directory path inside public assets
+// Establish paths
+const jsonPath = path.join(process.cwd(), 'public', 'images', 'gallery', 'gallery.json');
 const galleryDir = path.join(process.cwd(), 'public', 'images', 'gallery');
 
 let galleryImages = [];
 
-if (fs.existsSync(galleryDir)) {
+if (fs.existsSync(jsonPath)) {
+  try {
+    galleryImages = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  } catch (e) {
+    console.error("Gagal membaca gallery.json di frontmatter:", e);
+  }
+}
+
+// Fallback to reading directory directly if gallery.json doesn't exist or is empty
+if (galleryImages.length === 0 && fs.existsSync(galleryDir)) {
   const files = fs.readdirSync(galleryDir);
   const allowedExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.svg'];
   
   galleryImages = files
-    .filter(file => allowedExtensions.includes(path.extname(file).toLowerCase()))
+    .filter(file => allowedExtensions.includes(path.extname(file).toLowerCase()) && file !== 'gallery.json')
     .map((file, idx) => {
-      // Replaces underscores and dashes with spaces, and capitalizes each word
       const displayName = path.basename(file, path.extname(file))
         .replace(/[_-]/g, ' ')
         .replace(/\b\w/g, c => c.toUpperCase());
@@ -31,6 +40,9 @@ if (fs.existsSync(galleryDir)) {
       };
     });
 }
+
+// Pre-render the first 9 images for initial view (SEO)
+const initialImages = galleryImages.slice(0, 9);
 ---
 
 <Layout title="Galeri Dokumentasi Pengerjaan Jalan & Parkir | CV. Rassya Tunggal Mandiri">
@@ -76,7 +88,7 @@ if (fs.existsSync(galleryDir)) {
         <!-- File count indicator -->
         <div class="shrink-0 flex items-center gap-2.5 bg-white border border-slate-200/60 px-5 py-3 rounded-2xl shadow-sm text-xs font-bold text-slate-500">
           <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
-          <span>Menampilkan {galleryImages.length} Gambar</span>
+          <span id="file-count-text">Menampilkan {galleryImages.length} Gambar</span>
         </div>
       </div>
 
@@ -94,7 +106,7 @@ if (fs.existsSync(galleryDir)) {
         <!-- Staggered Gallery Grid -->
         <div>
           <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {galleryImages.map((img, idx) => (
+            {initialImages.map((img, idx) => (
               <article 
                 class="gallery-card bg-white rounded-[2rem] border border-slate-100 shadow-antigravity overflow-hidden group hover:-translate-y-1.5 hover:shadow-antigravity-hover transition-all duration-300 text-left flex flex-col h-full animate-fade-in"
                 data-name={img.name.toLowerCase()}
@@ -124,21 +136,30 @@ if (fs.existsSync(galleryDir)) {
                 <!-- Card Body (Title & filename info) -->
                 <div class="p-6 flex flex-col justify-between flex-grow">
                   <div>
-                    <h3 class="text-[15.5px] font-extrabold text-brand-dark group-hover:text-primary transition-colors duration-300 leading-snug mb-3">
+                    <h3 class="text-[15.5px] font-extrabold text-brand-dark group-hover:text-primary transition-colors duration-300 leading-snug">
                       {img.name}
                     </h3>
-                  </div>
-                  <!-- Filename badge footer -->
-                  <div class="border-t border-slate-50 pt-4 mt-auto flex items-center justify-between">
-                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Nama File</span>
-                    <span class="font-mono text-[10.5px] font-semibold text-slate-500 truncate max-w-[200px]" title={img.fileName}>
-                      {img.fileName}
-                    </span>
                   </div>
                 </div>
               </article>
             ))}
           </div>
+
+          <!-- Load More Button Container -->
+          {galleryImages.length > initialImages.length && (
+            <div id="load-more-container" class="flex justify-center mt-12 mb-6">
+              <button 
+                id="btn-load-more" 
+                class="inline-flex items-center gap-2.5 px-8 py-4 bg-brand-dark hover:bg-primary text-white hover:text-brand-dark text-sm font-extrabold rounded-2xl shadow-antigravity hover:shadow-antigravity-hover hover:-translate-y-0.5 transition-all duration-300 transform active:scale-98 cursor-pointer"
+              >
+                <span>Muat Lebih Banyak</span>
+                <svg id="load-more-spinner" class="hidden animate-spin h-4 w-4 text-current" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+              </button>
+            </div>
+          )}
 
           <!-- JavaScript Search empty state -->
           <div id="search-empty-state" class="hidden text-center py-16 bg-white border border-slate-100 rounded-3xl shadow-sm max-w-md mx-auto mt-6 animate-fade-in">
@@ -175,38 +196,17 @@ if (fs.existsSync(galleryDir)) {
 <!-- Client Side Zoom & Filename Search Filter Script -->
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
-    // ----------------------------------------------------
-    // LIVE FILENAME SEARCH FILTER
-    // ----------------------------------------------------
     const searchInput = document.getElementById('search-input');
     const galleryGrid = document.getElementById('gallery-grid');
     const searchEmptyState = document.getElementById('search-empty-state');
-    const cards = document.querySelectorAll('.gallery-card');
+    const loadMoreContainer = document.getElementById('load-more-container');
+    const btnLoadMore = document.getElementById('btn-load-more');
+    const spinner = document.getElementById('load-more-spinner');
+    const fileCountText = document.getElementById('file-count-text');
 
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
-        let matchCount = 0;
-
-        cards.forEach(card => {
-          const nameAttr = card.getAttribute('data-name');
-          if (nameAttr.includes(query)) {
-            card.classList.remove('hidden');
-            matchCount++;
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-
-        if (matchCount === 0 && cards.length > 0) {
-          searchEmptyState.classList.remove('hidden');
-          galleryGrid.classList.add('hidden');
-        } else {
-          searchEmptyState.classList.add('hidden');
-          galleryGrid.classList.remove('hidden');
-        }
-      });
-    }
+    let allImages = [];
+    let loadedCount = 9;
+    const batchSize = 9;
 
     // ----------------------------------------------------
     // FULLSCREEN LIGHTBOX ZOOM OVERLAY
@@ -215,7 +215,6 @@ if (fs.existsSync(galleryDir)) {
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const btnCloseLightbox = document.getElementById('btn-close-lightbox');
-    const zoomTriggers = document.querySelectorAll('.btn-zoom-image');
 
     function openLightbox(url, name) {
       if (!lightboxModal) return;
@@ -233,13 +232,23 @@ if (fs.existsSync(galleryDir)) {
       lightboxModal.children[1].classList.remove('scale-100');
     }
 
-    zoomTriggers.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const url = trigger.getAttribute('data-image-url');
-        const name = trigger.getAttribute('data-image-name');
-        openLightbox(url, name);
+    function handleZoomClick(e) {
+      const trigger = e.currentTarget;
+      const url = trigger.getAttribute('data-image-url');
+      const name = trigger.getAttribute('data-image-name');
+      openLightbox(url, name);
+    }
+
+    function bindZoomTriggers() {
+      const zoomTriggers = document.querySelectorAll('.btn-zoom-image');
+      zoomTriggers.forEach(trigger => {
+        trigger.removeEventListener('click', handleZoomClick);
+        trigger.addEventListener('click', handleZoomClick);
       });
-    });
+    }
+
+    // Bind initially rendered cards
+    bindZoomTriggers();
 
     if (btnCloseLightbox) {
       btnCloseLightbox.addEventListener('click', closeLightbox);
@@ -248,6 +257,245 @@ if (fs.existsSync(galleryDir)) {
     if (lightboxModal) {
       lightboxModal.addEventListener('click', (e) => {
         if (e.target === lightboxModal) closeLightbox();
+      });
+    }
+
+    // ----------------------------------------------------
+    // FETCH DYNAMIC GALLERY & DYNAMIC RENDER
+    // ----------------------------------------------------
+    fetch('/images/gallery/gallery.json')
+      .then(res => {
+        if (!res.ok) throw new Error("Gagal memuat gallery.json");
+        return res.json();
+      })
+      .then(data => {
+        allImages = data;
+        
+        // Synchronize counts
+        if (fileCountText) {
+          fileCountText.innerText = `Menampilkan ${allImages.length} Gambar`;
+        }
+
+        // Show/hide Load More button based on actual images length
+        if (allImages.length > loadedCount) {
+          if (loadMoreContainer) loadMoreContainer.classList.remove('hidden');
+        } else {
+          if (loadMoreContainer) loadMoreContainer.classList.add('hidden');
+        }
+      })
+      .catch(err => {
+        console.error("Gagal mengambil data galeri dinamis:", err);
+      });
+
+    // ----------------------------------------------------
+    // DYNAMIC LOAD MORE ACTION
+    // ----------------------------------------------------
+    if (btnLoadMore) {
+      btnLoadMore.addEventListener('click', () => {
+        if (allImages.length === 0) return;
+        
+        // Show spinner and disable button for smooth feel
+        spinner.classList.remove('hidden');
+        btnLoadMore.disabled = true;
+
+        // Artificial professional feedback delay (300ms)
+        setTimeout(() => {
+          const nextBatch = allImages.slice(loadedCount, loadedCount + batchSize);
+          
+          nextBatch.forEach((img, index) => {
+            const card = document.createElement('article');
+            card.className = "gallery-card bg-white rounded-[2rem] border border-slate-100 shadow-antigravity overflow-hidden group hover:-translate-y-1.5 hover:shadow-antigravity-hover transition-all duration-300 text-left flex flex-col h-full animate-fade-in";
+            card.setAttribute('data-name', img.name.toLowerCase());
+            card.style.animationDelay = `${index * 50}ms`;
+
+            card.innerHTML = `
+              <div 
+                class="h-64 overflow-hidden relative shrink-0 cursor-zoom-in btn-zoom-image"
+                data-image-url="${img.url}"
+                data-image-name="${img.name}"
+              >
+                <img 
+                  src="${img.url}" 
+                  alt="${img.name}" 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103" 
+                  loading="lazy" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      <line x1="11" y1="8" x2="11" y2="14" />
+                      <line x1="8" y1="11" x2="14" y2="11" />
+                    </svg>
+                    <span>Zoom Gambar</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-6 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 class="text-[15.5px] font-extrabold text-brand-dark group-hover:text-primary transition-colors duration-300 leading-snug">
+                    ${img.name}
+                  </h3>
+                </div>
+              </div>
+            `;
+            galleryGrid.appendChild(card);
+          });
+
+          // Re-bind zoom events
+          bindZoomTriggers();
+
+          // Update state
+          loadedCount += batchSize;
+          
+          // Disable/hide button if everything is loaded
+          spinner.classList.add('hidden');
+          btnLoadMore.disabled = false;
+          if (loadedCount >= allImages.length) {
+            if (loadMoreContainer) loadMoreContainer.classList.add('hidden');
+          }
+        }, 300);
+      });
+    }
+
+    // ----------------------------------------------------
+    // LIVE FILENAME SEARCH FILTER (SPA-Style)
+    // ----------------------------------------------------
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (query === '') {
+          // RESTORE ORIGINAL PAGINATED VIEW
+          galleryGrid.innerHTML = '';
+          searchEmptyState.classList.add('hidden');
+          galleryGrid.classList.remove('hidden');
+          
+          // Re-render only paginated cards
+          const originalToShow = allImages.slice(0, loadedCount);
+          originalToShow.forEach((img, idx) => {
+            const card = document.createElement('article');
+            card.className = "gallery-card bg-white rounded-[2rem] border border-slate-100 shadow-antigravity overflow-hidden group hover:-translate-y-1.5 hover:shadow-antigravity-hover transition-all duration-300 text-left flex flex-col h-full animate-fade-in";
+            card.setAttribute('data-name', img.name.toLowerCase());
+            card.style.animationDelay = `${(idx % batchSize) * 30}ms`;
+
+            card.innerHTML = `
+              <div 
+                class="h-64 overflow-hidden relative shrink-0 cursor-zoom-in btn-zoom-image"
+                data-image-url="${img.url}"
+                data-image-name="${img.name}"
+              >
+                <img 
+                  src="${img.url}" 
+                  alt="${img.name}" 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103" 
+                  loading="lazy" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                  <span class="inline-flex items-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="11" cy="11" r="8" />
+                      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                      <line x1="11" y1="8" x2="11" y2="14" />
+                      <line x1="8" y1="11" x2="14" y2="11" />
+                    </svg>
+                    <span>Zoom Gambar</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-6 flex flex-col justify-between flex-grow">
+                <div>
+                  <h3 class="text-[15.5px] font-extrabold text-brand-dark group-hover:text-primary transition-colors duration-300 leading-snug">
+                    ${img.name}
+                  </h3>
+                </div>
+              </div>
+            `;
+            galleryGrid.appendChild(card);
+          });
+          
+          bindZoomTriggers();
+
+          if (fileCountText) {
+            fileCountText.innerText = `Menampilkan ${allImages.length} Gambar`;
+          }
+
+          if (allImages.length > loadedCount) {
+            if (loadMoreContainer) loadMoreContainer.classList.remove('hidden');
+          } else {
+            if (loadMoreContainer) loadMoreContainer.classList.add('hidden');
+          }
+          
+        } else {
+          // SEARCH WHOLE DATA DYNAMICALLY
+          if (loadMoreContainer) loadMoreContainer.classList.add('hidden');
+          
+          const filtered = allImages.filter(img => img.name.toLowerCase().includes(query));
+          
+          galleryGrid.innerHTML = '';
+          
+          if (filtered.length === 0) {
+            searchEmptyState.classList.remove('hidden');
+            galleryGrid.classList.add('hidden');
+            if (fileCountText) {
+              fileCountText.innerText = `Ditemukan 0 Gambar`;
+            }
+          } else {
+            searchEmptyState.classList.add('hidden');
+            galleryGrid.classList.remove('hidden');
+            
+            if (fileCountText) {
+              fileCountText.innerText = `Ditemukan ${filtered.length} Gambar`;
+            }
+
+            filtered.forEach((img, idx) => {
+              const card = document.createElement('article');
+              card.className = "gallery-card bg-white rounded-[2rem] border border-slate-100 shadow-antigravity overflow-hidden group hover:-translate-y-1.5 hover:shadow-antigravity-hover transition-all duration-300 text-left flex flex-col h-full animate-fade-in";
+              card.setAttribute('data-name', img.name.toLowerCase());
+              card.style.animationDelay = `${Math.min(idx * 30, 300)}ms`;
+
+              card.innerHTML = `
+                <div 
+                  class="h-64 overflow-hidden relative shrink-0 cursor-zoom-in btn-zoom-image"
+                  data-image-url="${img.url}"
+                  data-image-name="${img.name}"
+                >
+                  <img 
+                    src="${img.url}" 
+                    alt="${img.name}" 
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103" 
+                    loading="lazy" 
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-white uppercase tracking-wider">
+                      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        <line x1="11" y1="8" x2="11" y2="14" />
+                        <line x1="8" y1="11" x2="14" y2="11" />
+                      </svg>
+                      <span>Zoom Gambar</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="p-6 flex flex-col justify-between flex-grow">
+                  <div>
+                    <h3 class="text-[15.5px] font-extrabold text-brand-dark group-hover:text-primary transition-colors duration-300 leading-snug">
+                      ${img.name}
+                    </h3>
+                  </div>
+                </div>
+              `;
+              galleryGrid.appendChild(card);
+            });
+            
+            bindZoomTriggers();
+          }
+        }
       });
     }
   });
