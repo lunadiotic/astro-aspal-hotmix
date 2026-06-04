@@ -4,6 +4,9 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+// Get environment variables
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '62812345678';
+
 // Generate static routes at build time for all markdown items in 'wilayah' collection
 export async function getStaticPaths() {
   const regions = await getCollection('wilayah');
@@ -84,12 +87,12 @@ const pageTitle = entry.data.metaTitle || `${entry.data.title} | CV. Rassya Tung
             Dapatkan estimasi biaya pengerjaan aspal gratis dan konsultasikan kebutuhan jalan Anda langsung dengan tim ahli kami di wilayah Anda.
           </p>
           <a 
-            href={`https://wa.me/6285210805708?text=Halo%20CV.%20Rassya%20Tunggal%20Mandiri,%20saya%20ingin%20berkonsultasi%20jasa%20pengaspalan%20di%20wilayah%20${encodeURIComponent(entry.data.title)}`}
+            href={`https://wa.me/${whatsappNumber}?text=Halo,%20saya%20ingin%20berkonsultasi%20jasa%20pengaspalan%20di%20wilayah%20${encodeURIComponent(entry.data.title)}`}
             target="_blank"
             rel="noopener noreferrer"
             class="block w-full text-center bg-white hover:bg-slate-50 text-primary font-extrabold py-3.5 px-6 rounded-2xl shadow-lg hover:-translate-y-0.5 transition-all duration-300 text-[14px] relative z-10"
           >
-            Hubungi WhatsApp (CV. Rassya Tunggal Mandiri)
+            Hubungi WhatsApp
           </a>
         </div>
       </aside>

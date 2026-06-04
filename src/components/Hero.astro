@@ -1,5 +1,7 @@
 ---
 // Hero.astro - Jasa Pengaspalan Hotmix
+
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '62812345678';
 ---
 
 <section id="home" class="relative overflow-hidden bg-gradient-to-b from-brand-light to-white pt-24 pb-20 md:pt-32 md:pb-28">
@@ -49,7 +51,7 @@
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
         <a 
-          href="https://wa.me/6285210805708?text=Halo%20CV.%20Rassya%20Tunggal%20Mandiri,%20saya%20tertarik%20dengan%20jasa%20pengaspalan%20hotmix.%20Boleh%20minta%20penawaran%20harga?" 
+          href={`https://wa.me/${whatsappNumber}?text=Halo,%20saya%20tertarik%20dengan%20jasa%20pengaspalan%20hotmix.%20Boleh%20minta%20penawaran%20harga?`}
           target="_blank"
           rel="noopener noreferrer"
           class="bg-primary hover:bg-primary-hover text-white text-center font-bold px-8 py-4.5 rounded-2xl shadow-glow-primary hover:-translate-y-1 hover:shadow-lg transition-all duration-300 text-[15px]"

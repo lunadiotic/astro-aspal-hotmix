@@ -5,6 +5,14 @@ import Icon from './Icon.astro';
 // Fetch the service collections and sort by order metadata
 const services = await getCollection('services');
 const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+
+// Environment variables with fallbacks
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '62812345678';
+const companyEmail = import.meta.env.PUBLIC_COMPANY_EMAIL || 'info@example.com';
+const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL || 'https://instagram.com';
+const tiktokUrl = import.meta.env.PUBLIC_TIKTOK_URL || 'https://tiktok.com';
+const youtubeUrl = import.meta.env.PUBLIC_YOUTUBE_URL || 'https://youtube.com';
+const linkedinUrl = import.meta.env.PUBLIC_LINKEDIN_URL || 'https://linkedin.com';
 ---
 
 <section id="kontak" class="py-24 bg-brand-light relative overflow-hidden">
@@ -37,24 +45,24 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
           </div>
           <div>
             <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Hotline WhatsApp</span>
-            <a href="https://wa.me/6285210805708" target="_blank" rel="noopener noreferrer" class="text-base sm:text-lg font-extrabold text-brand-dark hover:text-secondary transition-colors">
-              +62 852-1080-5708
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="text-base sm:text-lg font-extrabold text-brand-dark hover:text-secondary transition-colors">
+              +62 812-3456-78
             </a>
           </div>
         </div>
 
         <!-- Card 2: HQ Address -->
-        <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-start gap-5 hover:shadow-antigravity transition-all duration-300">
-          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-            <Icon name="location-dot" class="w-6 h-6" />
+          <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-start gap-5 hover:shadow-antigravity transition-all duration-300">
+            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <Icon name="location-dot" class="w-6 h-6" />
+            </div>
+            <div>
+              <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Alamat Kantor</span>
+              <p class="text-[13.5px] font-semibold text-slate-600 leading-relaxed">
+                Jl. Dummy Street No. 1, Dummy City | Jl. Dummy Street No. 2, Dummy City
+              </p>
+            </div>
           </div>
-          <div>
-            <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Alamat Kantor</span>
-            <p class="text-[13.5px] font-semibold text-slate-600 leading-relaxed">
-              Jl. Raya Parung, Bogor | Jl. Raya Sindang Laut, Cirebon
-            </p>
-          </div>
-        </div>
 
         <!-- Card 3: Email Address -->
         <div class="bg-white p-6 rounded-[2rem] border border-slate-100/60 shadow-sm flex items-center gap-5 hover:shadow-antigravity transition-all duration-300">
@@ -63,8 +71,8 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
           </div>
           <div>
             <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Email Resmi</span>
-            <a href="mailto:pengaspalanjasa8@gmail.com" class="text-sm sm:text-base font-extrabold text-brand-dark hover:text-primary transition-colors">
-              pengaspalanjasa8@gmail.com
+            <a href={`mailto:${companyEmail}`} class="text-sm sm:text-base font-extrabold text-brand-dark hover:text-primary transition-colors">
+              info@example.com
             </a>
           </div>
         </div>
@@ -85,38 +93,38 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
           <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider mb-4">Media Sosial Resmi</span>
           <div class="flex items-center gap-3">
             <a 
-              href="https://instagram.com/jasapengaspalan42" 
+              href={instagramUrl}
               target="_blank" 
               rel="noopener noreferrer" 
               class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
-              aria-label="Instagram CV. Rassya Tunggal Mandiri"
+              aria-label="Instagram"
             >
               <Icon name="instagram" class="w-5 h-5" />
             </a>
             <a 
-              href="https://tiktok.com/@jasa.pengaspalan00" 
+              href={tiktokUrl}
               target="_blank" 
               rel="noopener noreferrer" 
               class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-black flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
-              aria-label="TikTok CV. Rassya Tunggal Mandiri"
+              aria-label="TikTok"
             >
               <Icon name="tiktok" class="w-5 h-5" />
             </a>
             <a 
-              href="https://www.youtube.com/@jasaPengaspalan-w6k" 
+              href={youtubeUrl}
               target="_blank" 
               rel="noopener noreferrer" 
               class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-red-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
-              aria-label="YouTube CV. Rassya Tunggal Mandiri"
+              aria-label="YouTube"
             >
               <Icon name="youtube" class="w-5 h-5" />
             </a>
             <a 
-              href="https://www.linkedin.com/in/jasa-pengaspalan-211ab6407" 
+              href={linkedinUrl}
               target="_blank" 
               rel="noopener noreferrer" 
               class="w-10 h-10 rounded-xl bg-slate-50 text-slate-500 hover:text-white hover:bg-blue-600 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 shadow-sm" 
-              aria-label="LinkedIn CV. Rassya Tunggal Mandiri"
+              aria-label="LinkedIn"
             >
               <Icon name="linkedin" class="w-5 h-5" />
             </a>
@@ -186,7 +194,7 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
 </section>
 
 <!-- Zero external dependencies, pure lightweight browser execution block for Form validation & WA redirect -->
-<script is:inline>
+<script is:inline define:vars={{whatsappNumber}}>
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('wa-lead-form');
     if (form) {
@@ -201,11 +209,10 @@ const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
         const message = document.getElementById('form-message').value.trim();
         
         // WhatsApp prefilled template construction
-        const waNumber = '6285210805708';
-        const template = `Halo CV. Rassya Tunggal Mandiri,%0A%0ASaya ingin mengajukan formulir estimasi penawaran harga pengaspalan hotmix.%0A%0A*Detail Penawaran:*%0A• *Nama Lengkap:* ${encodeURIComponent(name)}%0A• *Wilayah Proyek:* ${encodeURIComponent(region)}%0A• *Jenis Paving:* ${encodeURIComponent(paving)}%0A• *Estimasi Luas:* ${encodeURIComponent(area)} m²%0A• *Catatan Tambahan:* ${encodeURIComponent(message || '-')}%0A%0AMohon bantuannya untuk menghitung perkiraan biaya dan jadwal survei lokasi gratis. Terima kasih!`;
+        const template = `Halo,%0A%0ASaya ingin mengajukan formulir estimasi penawaran harga pengaspalan hotmix.%0A%0A*Detail Penawaran:*%0A• *Nama Lengkap:* ${encodeURIComponent(name)}%0A• *Wilayah Proyek:* ${encodeURIComponent(region)}%0A• *Jenis Paving:* ${encodeURIComponent(paving)}%0A• *Estimasi Luas:* ${encodeURIComponent(area)} m²%0A• *Catatan Tambahan:* ${encodeURIComponent(message || '-')}%0A%0AMohon bantuannya untuk menghitung perkiraan biaya dan jadwal survei lokasi gratis. Terima kasih!`;
         
         // Fire WA window
-        window.open(`https://wa.me/${waNumber}?text=${template}`, '_blank');
+        window.open(`https://wa.me/${whatsappNumber}?text=${template}`, '_blank');
       });
     }
   });

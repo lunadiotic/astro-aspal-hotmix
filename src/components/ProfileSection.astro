@@ -1,5 +1,8 @@
 ---
 // ProfileSection.astro - Tentang Kami / Profil Perusahaan
+
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '62812345678';
+
 const brandValues = [
   {
     title: 'Tim Ahli Berpengalaman',
@@ -49,7 +52,7 @@ const brandValues = [
       
       <!-- Call to action inside profile -->
       <a 
-        href="https://wa.me/6285210805708?text=Halo%20Astra%20Aspal,%20saya%20ingin%20berkonsultasi%20mengenai%20profil%20dan%20penawaran%20harga" 
+        href={`https://wa.me/${whatsappNumber}?text=Halo,%20saya%20ingin%20berkonsultasi%20mengenai%20profil%20dan%20penawaran%20harga`}
         target="_blank"
         rel="noopener noreferrer"
         class="bg-primary hover:bg-primary-hover text-white font-bold py-3.5 px-8 rounded-2xl shadow-glow-primary hover:-translate-y-0.5 transition-all duration-300 text-sm"

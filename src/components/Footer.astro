@@ -3,6 +3,15 @@ import Icon from './Icon.astro';
 
 const currentYear = new Date().getFullYear();
 
+// Environment variables with fallbacks
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '62812345678';
+const officeAddress1 = import.meta.env.PUBLIC_OFFICE_ADDRESS_1 || 'Jl. Dummy Street No. 1, Dummy City';
+const officeAddress2 = import.meta.env.PUBLIC_OFFICE_ADDRESS_2 || 'Jl. Dummy Street No. 2, Dummy City';
+const instagramUrl = import.meta.env.PUBLIC_INSTAGRAM_URL || 'https://instagram.com';
+const tiktokUrl = import.meta.env.PUBLIC_TIKTOK_URL || 'https://tiktok.com';
+const youtubeUrl = import.meta.env.PUBLIC_YOUTUBE_URL || 'https://youtube.com';
+const linkedinUrl = import.meta.env.PUBLIC_LINKEDIN_URL || 'https://linkedin.com';
+
 const footerLinks = [
   { href: '#home', label: 'Home' },
   { href: '#layanan', label: 'Layanan' },
@@ -47,38 +56,38 @@ const footerLinks = [
         <span class="block text-xs text-slate-500 font-extrabold uppercase tracking-wider mb-3.5">Ikuti Media Sosial Kami</span>
         <div class="flex items-center gap-3">
           <a 
-            href="https://instagram.com/jasapengaspalan42" 
+            href={instagramUrl}
             target="_blank" 
             rel="noopener noreferrer" 
             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-gradient-to-tr hover:from-amber-500 hover:to-purple-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
-            aria-label="Instagram CV. Rassya Tunggal Mandiri"
+            aria-label="Instagram"
           >
               <Icon name="instagram" class="w-5 h-5" />
           </a>
           <a 
-            href="https://tiktok.com/@jasa.pengaspalan00" 
+            href={tiktokUrl}
             target="_blank" 
             rel="noopener noreferrer" 
             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-black hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
-            aria-label="TikTok CV. Rassya Tunggal Mandiri"
+            aria-label="TikTok"
           >
               <Icon name="tiktok" class="w-5 h-5" />
           </a>
           <a 
-            href="https://youtube.com/@jasaPengaspalan-w6k" 
+            href={youtubeUrl}
             target="_blank" 
             rel="noopener noreferrer" 
             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-red-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
-            aria-label="YouTube CV. Rassya Tunggal Mandiri"
+            aria-label="YouTube"
           >
               <Icon name="youtube" class="w-5 h-5" />
           </a>
           <a 
-            href="https://www.linkedin.com/in/jasa-pengaspalan-211ab6407" 
+            href={linkedinUrl}
             target="_blank" 
             rel="noopener noreferrer" 
             class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-blue-600 hover:border-transparent flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" 
-            aria-label="LinkedIn CV. Rassya Tunggal Mandiri"
+            aria-label="LinkedIn"
           >
               <Icon name="linkedin" class="w-5 h-5" />
           </a>
@@ -115,8 +124,8 @@ const footerLinks = [
           <Icon name="location-dot" class="w-4 h-4" />
         </div>
         <p class="text-slate-400 font-medium text-xs sm:text-sm leading-relaxed text-left">
-          <strong>Kantor Pusat CV. Rassya Tunggal Mandiri:</strong><br />
-          Jl. Raya Parung, Bogor | Jl. Raya Sindang Laut, Cirebon
+          <strong>Office Addresses:</strong><br />
+          {officeAddress1} | {officeAddress2}
         </p>
       </div>
 
@@ -128,12 +137,12 @@ const footerLinks = [
         <div class="text-left">
           <span class="block text-xs text-slate-400 font-bold uppercase tracking-wider">Konsultasi / WA:</span>
           <a 
-            href="https://wa.me/6285210805708?text=Halo%20CV.%20Rassya%20Tunggal%20Mandiri,%20saya%20ingin%20meminta%20penawaran%20harga%20jasa%20pengaspalan" 
+            href={`https://wa.me/${whatsappNumber}`}
             target="_blank" 
             rel="noopener noreferrer" 
             class="block text-white font-extrabold text-sm sm:text-base hover:text-secondary hover:underline transition-colors mt-0.5"
           >
-            +6285210805708 (CV. Rassya Tunggal Mandiri)
+            +62 812-3456-78
           </a>
         </div>
       </div>

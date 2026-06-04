@@ -4,6 +4,9 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
+// Get environment variables
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '62812345678';
+
 // Generate static routes at build time for all markdown items in 'blog' collection
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -85,7 +88,7 @@ function formatDate(dateStr: string) {
           <span class="block text-xs text-slate-400 font-medium mt-0.5">Hubungi kami untuk penawaran harga & survei lokasi gratis</span>
         </div>
         <a 
-          href="https://wa.me/6285210805708?text=Halo%20CV.%20Rassya%20Tunggal%20Mandiri,%20saya%20membaca%20artikel%20Anda%20dan%20tertarik%20dengan%20jasa%20pengaspalan.%20Bisa%20bantu%20estimasi%20biaya?"
+          href={`https://wa.me/${whatsappNumber}?text=Halo,%20saya%20membaca%20artikel%20Anda%20dan%20tertarik%20dengan%20jasa%20pengaspalan.%20Bisa%20bantu%20estimasi%20biaya?`}
           target="_blank"
           rel="noopener noreferrer"
           class="bg-secondary hover:bg-emerald-600 text-white font-extrabold py-3.5 px-8 rounded-2xl shadow-glow-secondary hover:-translate-y-0.5 transition-all duration-300 text-[14px]"
